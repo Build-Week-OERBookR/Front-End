@@ -3,6 +3,7 @@ import Book from './Book';
 import styled from 'styled-components';
 import axios from 'axios';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import { Link } from 'react-router-dom';
 
 const BookList = (props) => {
 
@@ -15,7 +16,7 @@ const BookList = (props) => {
         flex-direction: column;
     }
     `
-    let token = localStorage.getItem('token')
+    
     const [books, updateBooks] = useState([]);
     useEffect(() => {
         const getBooks = () => {
@@ -37,14 +38,18 @@ const BookList = (props) => {
         
         getBooks();
     }, [])
+
+
     return (
         <Books>
             {
                 books.map((book,i) => {
                     console.log(book.title)
                     return (
+                        <Link to={`books/${book.id}`}>
                         <Book
                         key={i}
+                        id={i}
                         image={book.thumbnail}
                         title={book.title}
                         tag={book.tag}
@@ -54,6 +59,8 @@ const BookList = (props) => {
                         description={book.description}
 
                          />
+                         </Link>
+                         
                     )
                 })
             }

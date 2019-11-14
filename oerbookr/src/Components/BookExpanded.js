@@ -1,7 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
-const Book = (props) => {
+const BookExpanded = (props) => {
+
+    const [book, setBook] =useState();
+    useEffect(() => {
+        const id = props.match.params.id;
+        axiosWithAuth()
+        .get(`https://oer-bookr.herokuapp.com/api/books/${id}`)
+        .then(res => {
+            console.log(res)
+            setBook(res.data)
+        })
+        .catch(err => {
+            console.error(err)
+        })
+    }, []);
 
     const  Img = styled.img `
     width: 10em;
@@ -50,7 +65,9 @@ const Book = (props) => {
     display: inline-block;
     font-family: 'Montserrat', sans-serif;
     `
-    const {thumbnail, title, tag,publisher,authors, description} = props;
+
+    const {thumbnail, title, tag,publisher,authors, description} = book;
+
     return (
         <Book>
             <BookTop>
@@ -62,7 +79,7 @@ const Book = (props) => {
                     <h6 className="tag">{tag}</h6>
                     <h6 className="publisher">{publisher}</h6>
                 </Publisher>
-                {/* <h6 >{authors
+                {/* <h6 className="author">{authors
                 .map(author => {
                     return author.name
                 })}
@@ -76,7 +93,9 @@ const Book = (props) => {
             </DescriptionContainer>
             
         </Book>
+
+        
     );
 }
 
-export default Book;
+export default BookExpanded;
