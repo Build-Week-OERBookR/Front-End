@@ -1,12 +1,19 @@
 import React from 'react';
-import './App.css';
+
+import Navigation from './Components/Navigation';
+import BookList from './Components/BookList';
+import { Route , Link} } from 'react-router-dom';
 import Login from './login/LoginPage';
 import SignUp from './signup/SignUp';
-import {Route, Link} from 'react-router-dom'
+
 
 function App() {
   return (
     <div className="App">
+
+      <Navigation />
+      <Route path='/' component={BookList} />
+
        <ul>
           <li>
             <Link to = '/login'>Login</Link>
@@ -18,6 +25,7 @@ function App() {
         
       <Route exact path = '/login' component = {Login} />
       <Route exact path = '/signup' component = {SignUp} />
+
     </div>
   );
 }
