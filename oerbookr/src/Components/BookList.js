@@ -4,6 +4,16 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 const BookList = (props) => {
+
+    const Books = styled.div `
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    @media(max-width: 500px) {
+        flex-direction: column;
+    }
+    `
     const [books, updateBooks] = useState([]);
     useEffect(() => {
         const getBooks = () => {
@@ -11,6 +21,7 @@ const BookList = (props) => {
         .get('https://oer-bookr.herokuapp.com/api/books/')
         .then(res => {
             console.log(res)
+            
         })
         .catch(err => {
             console.error(err);
@@ -21,10 +32,15 @@ const BookList = (props) => {
         getBooks();
     }, [])
     return (
-        <div>
+        <Books>
+            <Book />
+            <Book />
+            <Book />
+            <Book />
+            <Book />
             <Book />
             
-        </div>
+        </Books>
     );
 }
 
