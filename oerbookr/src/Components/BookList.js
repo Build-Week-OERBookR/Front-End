@@ -1,4 +1,5 @@
 import React,{ useState, useEffect } from 'react';
+import Book from './Book';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -21,6 +22,7 @@ const BookList = (props) => {
     }, [])
     return (
         <div>
+            <Book />
             
         </div>
     );
