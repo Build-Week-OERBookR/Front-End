@@ -10,7 +10,7 @@ const Login = (props) => {
             .then(res => {
                 console.log('Login Success', res)
                 localStorage.setItem('token', res.data.token)
-                props.history.push('/friends')
+                props.history.push('/booklist')
             })
             .catch (err => { 
                 console.log('its not working', err)
