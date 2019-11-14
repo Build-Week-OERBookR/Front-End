@@ -6,9 +6,14 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 background-color: #7EAFBA;
+width: 100vw;
+@media(max-width: 500px) {
+    width: 100vw;
+}
 `
 const H1 = styled.h1 `
 color: #D9B382;
+font-family: 'Secular One', sans-serif;
 `
 const UserButtons = styled.div `
 display: flex;

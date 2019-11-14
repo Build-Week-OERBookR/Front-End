@@ -5,6 +5,7 @@ import BookList from './Components/BookList';
 import { Route , Link} } from 'react-router-dom';
 import Login from './login/LoginPage';
 import SignUp from './signup/SignUp';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
 
       <Navigation />
       <Route path='/' component={BookList} />
+
+      <Footer />
+
 
        <ul>
           <li>
@@ -25,6 +29,7 @@ function App() {
         
       <Route exact path = '/login' component = {Login} />
       <Route exact path = '/signup' component = {SignUp} />
+
 
     </div>
   );
