@@ -4,7 +4,13 @@ import styled from 'styled-components';
 const Book = (props) => {
 
     const  Img = styled.img `
-    width: 50%;
+    width: 60%;
+    margin-left: -15%;
+    margin-right: 10%;
+    @media(max-width: 500px) {
+        width: 50%;
+        margin-left: 0;
+    }
     
     `
 
@@ -13,12 +19,17 @@ const Book = (props) => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 20%;
     text-align: center;
     border: 1px solid black;
+    border-radius: 12px;
     background-color: #D9B382;
     padding: 3%;
     margin: 1em;
+
+    @media(max-width: 500px) {
+        width: 100%;
+    }
     `
     const BookTop = styled.div `
     display: flex;
@@ -26,8 +37,9 @@ const Book = (props) => {
     `
     const Publisher = styled.div `
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
+    font-family: 'Lato', sans-serif;
     `
 
     const DescriptionContainer = styled.div `
@@ -40,6 +52,7 @@ const Book = (props) => {
     const Description = styled.p `
     width: 100%;
     display: inline-block;
+    font-family: 'Montserrat', sans-serif;
     `
 
     return (
