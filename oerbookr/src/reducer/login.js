@@ -2,7 +2,7 @@
 import {FETCH_BOOK_ID, FETCH_USER_ID} from './../action/loginAction';
 
 const initialState = {
-    user_id: '',
+    user_id: localStorage.getItem('id'),
     book_id: ''
 }
 export function reducer (state = initialState, action){

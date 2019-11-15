@@ -1,22 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore, combineReducers} from 'redux'
+import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
+import thunk from 'redux-thunk';
 import { BrowserRouter  as Router} from 'react-router-dom';
-
+import {reducer as fetchIdReducers} from './reducer/login'
+import {reducer as addToWishListReducer} from './reducer/addWishList'
 
 import './index.css';
 import App from './App';
 
-import {reducer as fetchIdReducers} from './reducer/login'
 
 import * as serviceWorker from './serviceWorker';
 
 const rootReducers = combineReducers({
     idReducer: fetchIdReducers,
+    addToWishList: addToWishListReducer
 });
 
-const store = createStore(rootReducers);
+const store = createStore(rootReducers, applyMiddleware(thunk));
 
 ReactDOM.render(<Provider store={ store }><Router><App /></Router></Provider>, document.getElementById('root'));
 

@@ -7,6 +7,7 @@ import { Route , Link} from 'react-router-dom';
 import Login from './login/LoginPage';
 import SignUp from './signup/SignUp';
 import Footer from './Components/Footer';
+import Wishlist from './Components/Wishlist/Wishlist';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         
       <Route exact path = '/login' component = {Login} />
       <Route exact path = '/signup' component = {SignUp} />
+      <Route exact path = '/wishlist' component = {Wishlist} />
 
 
     </div>

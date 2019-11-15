@@ -5,14 +5,13 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {get_book_id} from './../action/loginAction'
+import { addToWishlist } from './../action/addToWishList'
 
 const BookExpanded = (props) => {
 
 
     const [book, setBook] = useState({});
-
-    useEffect(() => {
-
+    useEffect(() => { 
         const id = props.match.params.id;
         const getBook = () => {
             axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/books/${id}`)
@@ -23,8 +22,6 @@ const BookExpanded = (props) => {
         .catch(err => {
             console.log(err)
         })
-        console.log('hello')
-
         }
         getBook()
         
@@ -56,7 +53,11 @@ const BookExpanded = (props) => {
             <div className="bookExpandedButtons">
                 <button className="add" onClick={(e)=>{
                     e.preventDefault();
-                    props.get_book_id(parseInt(props.match.params.id))
+                    props.get_book_id(parseInt(props.match.params.id));
+                    props.addToWishlist({ 
+                        user_id: parseInt(props.user_id), 
+                        book_id: parseInt(props.match.params.id)})
+                    console.log(props)
                 }}>Add To Wishlist</button>
                 <button className="add">Leave a review</button>
             </div>
@@ -68,10 +69,12 @@ const BookExpanded = (props) => {
 const mapStateToProps = state => {
     console.log(state)
     return{
-        user_Id: state.idReducer.user_id
+        user_id: state.idReducer.user_id,
+        book_id: state.idReducer.book_id
     }
 }
 const mapDispatchToProps = {
-    get_book_id
+    get_book_id,
+    addToWishlist
 }
 export default connect(mapStateToProps, mapDispatchToProps)(BookExpanded)
