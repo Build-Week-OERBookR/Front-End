@@ -13,7 +13,7 @@ const Book = (props) => {
     
     `
 
-    const Book = styled.div `
+    const BookDiv = styled.div `
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,32 +50,31 @@ const Book = (props) => {
     display: inline-block;
     font-family: 'Montserrat', sans-serif;
     `
-    const {thumbnail, title, tag,publisher,authors, description} = props;
+    
     return (
-        <Book>
+        <BookDiv>
             <BookTop>
-                <Img src={thumbnail} alt={title} className="book-img"/>
+                <Img src={props.image} alt={props.title} className="book-img"/>
 
             <div className="info">
-                <h1 className="title">{title}</h1>
+                <h1 className="title">{props.title}</h1>
                 <Publisher className="book-info">
-                    <h6 className="tag">{tag}</h6>
-                    <h6 className="publisher">{publisher}</h6>
+                    <h6 className="tag">{props.tag}</h6>
+                    <h6 className="publisher">{props.publisher}</h6>
                 </Publisher>
-                {/* <h6 >{authors
-                .map(author => {
-                    return author.name
-                })}
-                </h6> */}
+                {/* {props.authors.map(author => {
+                    return <h6>author.name</h6>
+                })} */}
+                
             </div>
 
             </BookTop>
             
             <DescriptionContainer>
-                <Description >{description}</Description>
+                <Description >{props.description}</Description>
             </DescriptionContainer>
             
-        </Book>
+        </BookDiv>
     );
 }
 

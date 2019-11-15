@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const BookList = (props) => {
 
-    const Books = styled.div `
+    const BooksDiv = styled.div `
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
@@ -34,19 +34,32 @@ const BookList = (props) => {
             console.error(err);
         })
 
+        axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/books/1`)
+        .then(res => {
+            console.log(res)
+            
+        })
+        .catch(err => {
+            console.log(err)
+        })
+
         }
+
+        
         
         getBooks();
     }, [])
 
 
     return (
-        <Books>
+        <BooksDiv>
             {
                 books.map((book,i) => {
-                    console.log(book.title)
+                    // console.log(book.title)
                     return (
-                        <Link to={`books/${book.id}`}>
+                        <Link
+                        key={i}
+                         to={`/books/${book.id}`}>
                         <Book
                         key={i}
                         id={i}
@@ -65,7 +78,7 @@ const BookList = (props) => {
                 })
             }
             
-        </Books>
+        </BooksDiv>
     );
 }
 
