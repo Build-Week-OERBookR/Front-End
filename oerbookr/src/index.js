@@ -13,7 +13,7 @@ import {reducer as fetchIdReducers} from './reducer/login'
 import * as serviceWorker from './serviceWorker';
 
 const rootReducers = combineReducers({
-    fetchIdReducers: fetchIdReducers
+    idReducer: fetchIdReducers,
 });
 
 const store = createStore(rootReducers);
