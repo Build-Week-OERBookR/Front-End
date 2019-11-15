@@ -11,8 +11,9 @@ const Login = (props) => {
         axiosWithAuth().post(`https://oer-bookr.herokuapp.com/api/auth/login`, credentials)
             .then(res => {
                 console.log('Login Success', res)
-                localStorage.setItem('token', res.data.token)
-                props.get_user_Id(res.data.user_id)
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('id', res.data.user_id);
+                props.get_user_Id(parseInt(localStorage.getItem('id')))
                 props.history.push('/booklist')
             })
             .catch (err => { 

@@ -9,7 +9,7 @@ export function get_user_Id (id){
     }
 }
 
-export function fetch_book_id (id){
+export function get_book_id (id){
     return {
         type: FETCH_BOOK_ID,
         payload: id

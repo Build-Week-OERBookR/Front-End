@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Book from '../Components/Book';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {get_book_id} from './../action/loginAction'
 
 const BookExpanded = (props) => {
 
@@ -43,6 +45,7 @@ const BookExpanded = (props) => {
             tag={book.tag}
             publisher={book.publisher}
             authors={book.authors}
+            
             // this is an array
             description={book.description} />
             <div className="reviews">
@@ -51,7 +54,10 @@ const BookExpanded = (props) => {
             </div>
 
             <div className="bookExpandedButtons">
-                <button className="add">Add To Wishlist</button>
+                <button className="add" onClick={(e)=>{
+                    e.preventDefault();
+                    props.get_book_id(parseInt(props.match.params.id))
+                }}>Add To Wishlist</button>
                 <button className="add">Leave a review</button>
             </div>
         </div>
@@ -59,4 +65,13 @@ const BookExpanded = (props) => {
     );
 }
 
-export default BookExpanded;
+const mapStateToProps = state => {
+    console.log(state)
+    return{
+        user_Id: state.idReducer.user_id
+    }
+}
+const mapDispatchToProps = {
+    get_book_id
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BookExpanded)
