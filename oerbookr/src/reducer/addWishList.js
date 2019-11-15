@@ -51,7 +51,7 @@ export function reducer (state = initialState, action){
                 allId: {
                     ...state.allId,
                     isFetching: false,
-                    payload: action.payload
+                    data: action.payload
                 }
             }
         case FETCH_ALLIDS_DATA_ERROR:
@@ -60,7 +60,7 @@ export function reducer (state = initialState, action){
                 allId: {
                     ...state.allId,
                     isFetching: false,
-                    payload: action.payload
+                    data: action.payload
                 }
             }
         default:

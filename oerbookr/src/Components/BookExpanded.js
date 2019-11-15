@@ -27,8 +27,7 @@ const BookExpanded = (props) => {
         
     }, []);
 
- 
-
+    
     // const {thumbnail, title, tag,publisher,authors, description} = book;
     console.log(book);
 
