@@ -10,7 +10,7 @@ const SignUp = (props) => {
             .then(res => {
                 localStorage.setItem('token', res.data.token)
                 console.log('Register Call Successful',res)
-                props.history.push('/')
+                props.history.push('/booklist')
             })
             .catch (err => { 
                 console.log('its not working', err)
