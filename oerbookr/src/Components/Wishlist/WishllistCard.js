@@ -8,8 +8,6 @@ function WishlistCard({wishlistData}) {
                 <ul>
                     <h4>Saved books</h4>
                     {wishlistData.books.map( (book, i) =><li key={i}>{book.title}</li> )}
-                    
-                    <li>More Saved books</li>
                 </ul>
             </WishListCardStyles>
     )
@@ -23,6 +21,7 @@ const WishListCardStyles = styled.div`
     width: 400px;
     padding: 10px 20px;
     margin-bottom: 15px;
+    background-color:rgb(217, 179, 130);
     ul h4{
         font-weight: bold;
     }
@@ -31,9 +30,5 @@ const WishListCardStyles = styled.div`
         font-weight: 500;
         font-size: 1rem;
         line-height: 23px;
-    }
-    ul li:last-child{
-        color: lightgrey;
-        text-decoration: underline;
     }
 `
