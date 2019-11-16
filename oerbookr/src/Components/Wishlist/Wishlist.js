@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
 import { fetchAllID, fetchWishListData } from './../../action/addToWishList';
+import WishlistList from './WishlistList';
 
 function Wishlist(props) {
     useEffect(() => {
@@ -17,7 +18,7 @@ function Wishlist(props) {
     })
     return (
         <div>
-            
+            <WishlistList />
         </div>
     )
 }

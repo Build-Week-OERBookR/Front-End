@@ -26,7 +26,6 @@ export function reducer (state = initialState, action){
                 isFetching: true
             }
         case FETCH_WIShLIST_DATA_SUCCESS:
-            console.log(state.data)
             return{
                 ...state,
                 isFetching: false,
