@@ -29,8 +29,8 @@ const BookExpanded = (props) => {
     }, []);
 
     const  Img = styled.img `
-    width: 15em;
-    height: 15em;
+    width: 18em;
+    height: 18em;
     margin-right: 15%;
     @media(max-width: 500px) {
         width: 100%;
@@ -45,7 +45,7 @@ const BookExpanded = (props) => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 60%;
+    width: 75%;
     text-align: center;
     border: 1px solid black;
     border-radius: 12px;
@@ -71,8 +71,15 @@ const BookExpanded = (props) => {
     `
     const Info = styled.div`
     margin-right: 15%;
+    font-size: 1.4em;
     `
     const Publisher = styled.div `
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    `
+    const Authors = styled.div `
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -84,12 +91,32 @@ const BookExpanded = (props) => {
     border: 1px solid black;
     background-color: #D7D7D7;
     margin-top: 1em;
+    padding: 2%;
+    line-height: 1.6em;
+    font-weight: bold;
     `
 
     const Description = styled.p `
     width: 100%;
     display: inline-block;
     font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    `
+    const Reviews = styled.div `
+    width: 80%;
+    margin: 1em auto;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #D7D7D7;
+    border: 1px solid black;
+    padding: 3%;
+    font-size: 1.2em;
+    font-weight: bold;
+    `
+    const Username = styled.p `
+    font-family: 'Lato', sans-serif;
+    border-bottom: 1px solid black;
+    width: 11%; 
+    margin: 0 auto; 
     `
     const Buttons = styled.div `
     display: flex; 
@@ -100,8 +127,8 @@ const BookExpanded = (props) => {
     display: inline-block;
     background-color: #7EAFBA;
     color: #111;
-    height: 4em;
-    width: 8em;
+    height: 4.5em;
+    width: 9em;
     font-weight: bold;
     `
 
@@ -123,9 +150,12 @@ const BookExpanded = (props) => {
                     <h6 className="tag">{book.tag}</h6>
                     <h6 className="publisher">{book.publisher}</h6>
                 </Publisher>
-                {book.authors && book.authors.map(author => {
-                    return <h6>{author.name}</h6>
-                })}
+                <Authors>
+                    {book.authors && book.authors.map(author => {
+                        return <h6>{author.name}</h6>
+                    })}
+                </Authors>
+               
                 
             </Info>
 
@@ -135,12 +165,12 @@ const BookExpanded = (props) => {
                 <Description >{book.description}</Description>
             </DescriptionContainer>
 
-            <div className="reviews">
+            <Reviews className="reviews">
                 {book.reviews && book.reviews.map((item,i) => {
                     
                         return (
                             <div className="review">
-                                   <p>{item.username}</p>
+                                   <Username>{item.username}</Username>
                            <p>{item.review}</p>
                            <p>{item.stars}</p>
                             </div>
@@ -150,7 +180,7 @@ const BookExpanded = (props) => {
                     
                     })}
                     
-            </div>
+            </Reviews>
 
             <Buttons className="bookExpandedButtons">
                 <Button className="add">Add To Wishlist</Button>

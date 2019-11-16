@@ -13,6 +13,7 @@ const BookList = (props) => {
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    padding: 3%;
 
 
     @media(max-width: 500px) {
