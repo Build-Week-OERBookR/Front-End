@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Book from '../Components/Book';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import axios from 'axios';
+import { Link  } from 'react-router-dom';
 
 const BookExpanded = (props) => {
 
@@ -15,13 +16,13 @@ const BookExpanded = (props) => {
         const getBook = () => {
             axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/books/${id}`)
         .then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             setBook(res.data)
         })
         .catch(err => {
             console.log(err)
         })
-        console.log('hello')
+        
 
         }
         getBook()
@@ -73,6 +74,9 @@ const BookExpanded = (props) => {
     margin-right: 15%;
     font-size: 1.4em;
     `
+    const Title = styled.h1 `
+    
+    `
     const Publisher = styled.div `
     display: flex;
     justify-content: space-between;
@@ -81,7 +85,7 @@ const BookExpanded = (props) => {
     `
     const Authors = styled.div `
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
     font-family: 'Lato', sans-serif;
     `
@@ -135,7 +139,7 @@ const BookExpanded = (props) => {
  
 
     // const {thumbnail, title, tag,publisher,authors, description} = book;
-    console.log(book);
+    
 
     return (
       
@@ -145,7 +149,7 @@ const BookExpanded = (props) => {
                 <Img src={book.thumbnail} alt={book.title} className="book-img"/>
 
             <Info >
-                <h1 className="title">{book.title}</h1>
+                <Title>{book.title}</Title>
                 <Publisher className="book-info">
                     <h6 className="tag">{book.tag}</h6>
                     <h6 className="publisher">{book.publisher}</h6>
@@ -166,24 +170,28 @@ const BookExpanded = (props) => {
             </DescriptionContainer>
 
             <Reviews className="reviews">
-                {book.reviews && book.reviews.map((item,i) => {
+                {book.reviews == '[]' ? book.reviews.map((item,i) => {
+                    console.log(item.review)
+                    
                     
                         return (
                             <div className="review">
-                                   <Username>{item.username}</Username>
-                           <p>{item.review}</p>
-                           <p>{item.stars}</p>
+                                <Username>{item.username}</Username>
+                                <p>{item.review}</p>
+                                <p>{item.stars}</p>
                             </div>
                            )
                        
                        
                     
-                    })}
+                    }): <p>There are no reviews for this title! Be the first!</p>
+                }
                     
             </Reviews>
 
             <Buttons className="bookExpandedButtons">
                 <Button className="add">Add To Wishlist</Button>
+               <a target='_blank' href={book.access_link}><Button className="add">Get This Book</Button></a>
                 <Button className="add">Leave a review</Button>
             </Buttons>
             

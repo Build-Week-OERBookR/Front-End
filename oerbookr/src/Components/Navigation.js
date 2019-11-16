@@ -6,6 +6,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 background-color: #7EAFBA;
+margin-bottom: 3em;
 
 @media(max-width: 500px) {
     
