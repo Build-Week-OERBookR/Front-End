@@ -5,10 +5,10 @@ import WishlistCard from './WishllistCard';
 
 
 function WishlistList(props) {
-    console.log(props.wishList)
     return (
         <WishlistListStyles>
-            {props.wishList.map( wishlistData => <WishlistCard wishlistData= {wishlistData}/>)}
+            {props.wishList.map( (wishlistData, i) =>  <WishlistCard key={i} wishlistData= {wishlistData}/>
+            )}
         </WishlistListStyles>
     )
 }

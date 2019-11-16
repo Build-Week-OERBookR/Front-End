@@ -6,10 +6,6 @@ import WishlistList from './WishlistList';
 function Wishlist(props) {
     useEffect(() => {
         props.fetchAllID();
-       
-        // write a clean up function and subscribe to allId from state 
-        // make a call to the  props.fetchWishListData() pass in the allId
-        // Loop through and make api calls and save the result to state of wishlistdata
     },[]);
 
     useEffect(()=>{

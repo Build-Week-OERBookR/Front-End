@@ -7,7 +7,7 @@ function WishlistCard({wishlistData}) {
                 <h3>User: {wishlistData.name}</h3>  
                 <ul>
                     <h4>Saved books</h4>
-                    {wishlistData.books.map( book =><li>{book.title}</li> )}
+                    {wishlistData.books.map( (book, i) =><li key={i}>{book.title}</li> )}
                     
                     <li>More Saved books</li>
                 </ul>
