@@ -1,0 +1,13 @@
+.NavLink {
+    display: inline-block;
+    text-decoration: none;
+    width: 30%;
+}
+
+@media(max-width: 500px) {
+    .NavLink {
+      
+        width: 80%;
+    }
+    
+}

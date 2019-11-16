@@ -3,14 +3,18 @@ import Book from './Book';
 import styled from 'styled-components';
 import axios from 'axios';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import './BookList.css';    
 
 const BookList = (props) => {
 
     const BooksDiv = styled.div `
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     flex-wrap: wrap;
+    padding: 3%;
+
 
     @media(max-width: 500px) {
         flex-direction: column;
@@ -57,7 +61,8 @@ const BookList = (props) => {
                 books.map((book,i) => {
                     // console.log(book.title)
                     return (
-                        <Link
+                        <NavLink
+                        className='NavLink'
                         key={i}
                          to={`/books/${book.id}`}>
                         <Book
@@ -72,7 +77,7 @@ const BookList = (props) => {
                         description={book.description}
 
                          />
-                         </Link>
+                         </NavLink>
                          
                     )
                 })

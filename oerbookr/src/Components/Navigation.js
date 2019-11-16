@@ -6,14 +6,15 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 background-color: #7EAFBA;
-width: 100vw;
+
 @media(max-width: 500px) {
-    width: 100vw;
+    
 }
 `
 const H1 = styled.h1 `
 color: #D9B382;
 font-family: 'Secular One', sans-serif;
+text-shadow: 2px 2px 2px #333;
 `
 const UserButtons = styled.div `
 display: flex;
@@ -22,6 +23,7 @@ color: #D9B382;
 width: 60%;
 margin: -2em auto 0 auto;
 font-size: 1.5em;
+text-shadow: 2px 2px 2px #333;
 `
 
 const Navigation = () => {
