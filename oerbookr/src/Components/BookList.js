@@ -1,7 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import Book from './Book';
 import styled from 'styled-components';
-import axios from 'axios';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { Link } from 'react-router-dom';
 

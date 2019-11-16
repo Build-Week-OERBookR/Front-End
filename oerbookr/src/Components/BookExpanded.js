@@ -1,15 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
 import Book from '../Components/Book';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import axios from 'axios';
 import {connect} from 'react-redux';
 import {get_book_id} from './../action/loginAction'
 import { addToWishlist } from './../action/addToWishList'
 
 const BookExpanded = (props) => {
-
-
+    
     const [book, setBook] = useState({});
     useEffect(() => { 
         const id = props.match.params.id;
@@ -27,7 +24,7 @@ const BookExpanded = (props) => {
         
     }, []);
 
-    
+
     // const {thumbnail, title, tag,publisher,authors, description} = book;
     console.log(book);
 

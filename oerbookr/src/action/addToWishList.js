@@ -14,12 +14,14 @@ export const FETCH_ALLIDS_DATA_START = 'FETCH_ALLIDS_DATA_START';
 export const addToWishlist = params => {
     
     return dispatch => {
-        dispatch({type: FETCH_WIShLIST_DATA_START});
+        // dispatch({type: FETCH_ALLIDS_DATA_START})
         axiosWithAuth().post(' https://oer-bookr.herokuapp.com/api/wishlist', params)
-            .then(res=> { 
-            })
-            .catch(err => {
-                console.log(err)
+        .then(res=> { 
+            // dispatch({type:FETCH_ALLIDS_DATA_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log(err)
+            // dispatch({type: FETCH_ALLIDS_DATA_ERROR, payload: err.response})
             })
         }   
 } 
@@ -29,10 +31,28 @@ export const fetchAllID = () => {
         dispatch({type: FETCH_ALLIDS_DATA_START});
         axiosWithAuth().get(' https://oer-bookr.herokuapp.com/api/wishlist')
             .then(res=> { 
+                
                 dispatch({type: FETCH_ALLIDS_DATA_SUCCESS, payload: res.data});
             })
             .catch(err => {
                 dispatch({type: FETCH_ALLIDS_DATA_ERROR, payload: err.data});
             });
+    }
+}
+
+export const fetchWishListData = (allId) => {
+
+    return dispatch => {
+        dispatch({type: FETCH_WIShLIST_DATA_START});
+        allId.forEach(element => {
+            axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/users/${element.user_id}`)
+                .then(res=> { 
+                    console.log(res.data)
+                    dispatch({type: FETCH_WIShLIST_DATA_SUCCESS, payload: res.data});
+                })
+                .catch(err => {
+                    dispatch({type: FETCH_WIShLIST_DATA_ERROR, payload: err.data});
+                });
+        });
     }
 }

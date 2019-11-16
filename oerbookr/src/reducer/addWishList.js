@@ -26,10 +26,11 @@ export function reducer (state = initialState, action){
                 isFetching: true
             }
         case FETCH_WIShLIST_DATA_SUCCESS:
+            console.log(state.data)
             return{
                 ...state,
                 isFetching: false,
-                data: action.payload
+                data: [...state.data, action.payload]
             }
         case FETCH_WIShLIST_DATA_ERROR:
             return{
@@ -38,6 +39,7 @@ export function reducer (state = initialState, action){
                 error: action.payload
             }
         case FETCH_ALLIDS_DATA_START:
+
             return{
                 ...state,
                 allId: {
@@ -46,6 +48,7 @@ export function reducer (state = initialState, action){
                 }
             }
         case FETCH_ALLIDS_DATA_SUCCESS:
+
             return{
                 ...state,
                 allId: {
