@@ -1,9 +1,17 @@
 import React from 'react'
 import styled from 'styled-components';
-function WishlistCard({wishlistData}) {
+
+function WishlistCard({wishlistData, setDisplay, display, setSavedBooks}) {
+
+    const handleDisplayModal = (e, books) => {
+        e.preventDefault();
+
+        setDisplay(!display)
+        setSavedBooks(books)
+    }
     return (
 
-            <WishListCardStyles>
+            <WishListCardStyles onClick= {e=> handleDisplayModal(e, wishlistData.books)}>
                 <h3>User: {wishlistData.name}</h3>  
                 <ul>
                     <h4>Saved books</h4>
