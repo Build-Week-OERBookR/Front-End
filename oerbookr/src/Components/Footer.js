@@ -8,6 +8,9 @@ const Footer = () => {
     color: #D9B382; 
     text-align: center;
     padding: 1em;
+    margin-top: 3em;
+    text-shadow: 2px 2px 2px #333;
+    font-family: 'Secular One', sans-serif;
     `
     return (
         <Footer>
