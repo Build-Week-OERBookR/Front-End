@@ -17,10 +17,7 @@ function App() {
       <Navigation />
       <Route exact path='/booklist' component={BookList} />
       <Route path ='/books/:id' component={BookExpanded} />
-
-      <Footer />
-
-
+      
        <ul>
           <li>
             <Link to = '/login'>Login</Link>
@@ -34,6 +31,8 @@ function App() {
       <Route exact path = '/signup' component = {SignUp} />
       <Route exact path = '/wishlist' component = {Wishlist} />
 
+
+      <Footer />
 
     </div>
   );

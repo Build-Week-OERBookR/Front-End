@@ -30,7 +30,16 @@ const SavedBooksDetailsModalStyles = styled.div`
         bottom: 0;
         left: 0px;
         right: 0px;
-        position: fixed;
-        background: rgba(0, 0, 0, 0.5)
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 50px -50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        p{
+            padding: 10px 30px;
+            background:rgb(217,179,130);
+            border-radius: 5px;
+        }
 `;
 

@@ -10,7 +10,7 @@ const BookList = (props) => {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-
+    margin-top: 120px;
     @media(max-width: 500px) {
         flex-direction: column;
     }

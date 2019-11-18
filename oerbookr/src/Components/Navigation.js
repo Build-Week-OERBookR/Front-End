@@ -9,6 +9,10 @@ justify-content: center;
 align-items: center;
 background-color: #7EAFBA;
 width: 100vw;
+position: fixed;
+top: 0px;
+left: 0px;
+height: 100px;
 @media(max-width: 500px) {
     width: 100vw;
 }

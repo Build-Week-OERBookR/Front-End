@@ -13,7 +13,7 @@ function Wishlist(props) {
         (props.allId.data.length > 1) && props.fetchWishListData(props.allId.data);
     })
     return (
-        <div>
+        <div style= {{marginTop: '50px'}}>
             <WishlistList />
         </div>
     )
