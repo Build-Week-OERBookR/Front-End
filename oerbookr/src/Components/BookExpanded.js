@@ -56,9 +56,10 @@ const BookExpanded = (props) => {
     border-radius: 12px;
     background-color: #D9B382;
     padding: 3%;
-    margin: 0 auto;
+    margin: 8% auto 0 auto;
     @media(max-width: 500px) {
-        width: 80%;
+        width: 90%;
+        margin: 25% auto 0 auto;
         
     }
     `
@@ -77,9 +78,23 @@ const BookExpanded = (props) => {
     const Info = styled.div`
     margin-right: 15%;
     font-size: 1.4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    @media(max-width: 500px) {
+        margin-right: 0;
+        padding-top: 1em;
+        
+    }
+    
     `
     const Title = styled.h1 `
-    
+    font-size: 1.5em;
+    @media(max-width: 500px) {
+        padding-bottom: .5em;
+        
+    }
     `
     const Publisher = styled.div `
     display: flex;

@@ -1,6 +1,12 @@
 import React, { useState, } from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
+import styled from 'styled-components';
 const SignUp = (props) => {
+
+  const SignupForm = styled.div `
+  margin-top: 10%;
+  
+  `
 
     const [credentials, setCredentials] = useState({name :'', username : '', password : ''})
 
@@ -24,7 +30,7 @@ const SignUp = (props) => {
     }
 
     return (
-      <div>
+      <SignupForm>
          <form onSubmit = {signup}>
                 <input 
                   type = 'text'
@@ -49,7 +55,7 @@ const SignUp = (props) => {
                 />
                 <button>Sign Up</button>
         </form>
-        </div>
+        </SignupForm>
     )
 }
 

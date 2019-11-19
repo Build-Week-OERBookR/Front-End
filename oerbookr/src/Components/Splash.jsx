@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const SplashPage = styled.div `
-padding: 10%;
+padding: 15%;
 
 `
 
@@ -12,14 +12,13 @@ const Splash = (props) => {
         <SplashPage>
             <h1 className="">Welcome to OER Bookr</h1>
             <h4>Your resource for learnin' good.</h4>
-            <ul>
-          <li>
-            <Link to = '/login'>Login</Link>
-          </li>
-          <li>
-            <Link to = '/signup'>SignUp</Link>
-          </li>
-        </ul>
+           <div>
+           <Link to = '/login'><button>Login</button></Link>
+          
+          <Link to = '/signup'><button>Sign Up</button></Link>
+           </div>
+            
+          
         </SplashPage>
     );
 }
