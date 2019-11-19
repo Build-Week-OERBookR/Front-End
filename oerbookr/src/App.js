@@ -8,6 +8,8 @@ import Login from './login/LoginPage';
 import SignUp from './signup/SignUp';
 import Footer from './Components/Footer';
 import Splash from './Components/Splash';
+import Wishlist from './Components/Wishlist/Wishlist';
+
 
 
 function App() {
@@ -23,7 +25,9 @@ function App() {
       <Route exact path='/booklist' component={BookList} />
       <Route path ='/books/:id' component={BookExpanded} />
 
+
       <Footer />
+
     </div>
   );
 }
