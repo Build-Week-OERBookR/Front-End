@@ -24,8 +24,9 @@ const Book = (props) => {
     border-radius: 12px;
     background-color: #D9B382;
     padding: 3%;
-    margin: 1em;
+    margin: 1em auto 1em auto;
     height: 40em;
+    box-shadow: 4px 4px 4px rgba(0,0,0,0.3);
     media(max-width: 500px) {
         width: 100%;
         

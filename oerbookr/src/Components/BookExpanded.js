@@ -1,13 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import Book from '../Components/Book';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import axios from 'axios';
 import { Link  } from 'react-router-dom';
 
 const BookExpanded = (props) => {
 
-
+    
     const [book, setBook] = useState({});
 
     useEffect(() => {
@@ -18,6 +16,7 @@ const BookExpanded = (props) => {
         .then(res => {
             // console.log(res.data)
             setBook(res.data)
+            
         })
         .catch(err => {
             console.log(err)
@@ -27,7 +26,7 @@ const BookExpanded = (props) => {
         }
         getBook()
         
-    }, []);
+    }, [props.match.params.id]);
 
     const  Img = styled.img `
     width: 18em;
@@ -139,7 +138,7 @@ const BookExpanded = (props) => {
  
 
     // const {thumbnail, title, tag,publisher,authors, description} = book;
-    
+  
 
     return (
       
@@ -170,9 +169,9 @@ const BookExpanded = (props) => {
             </DescriptionContainer>
 
             <Reviews className="reviews">
-                {book.reviews == '[]' ? book.reviews.map((item,i) => {
-                    console.log(item.review)
-                    
+
+                {
+                    book.reviews && book.reviews.length > 0 ? book.reviews.map((item,i) => {
                     
                         return (
                             <div className="review">
@@ -184,8 +183,22 @@ const BookExpanded = (props) => {
                        
                        
                     
-                    }): <p>There are no reviews for this title! Be the first!</p>
+                    }) : <h3>There are no reviews for this title, be the first to write one!</h3>
                 }
+                {/* { book.reviews && book.reviews.map((item,i) => {
+                    
+                        return (
+                            <div className="review">
+                                <Username>{item.username}</Username>
+                                <p>{item.review}</p>
+                                <p>{item.stars}</p>
+                            </div>
+                           )
+                       
+                       
+                    
+                    })
+                } */}
                     
             </Reviews>
 
