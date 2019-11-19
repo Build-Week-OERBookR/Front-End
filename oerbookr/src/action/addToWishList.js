@@ -42,22 +42,15 @@ export const fetchAllID = () => {
 
 export const fetchWishListData = (allId) => {
  
-   const obj={}
-   allId.map(l => {
-        obj[l.user_id] = l.user_id
-   });
-   const filteredIds = Object.values(obj)
+    const currentUserId = localStorage.getItem('id');
     return dispatch => {
         dispatch({type: FETCH_WIShLIST_DATA_START});
-        filteredIds.forEach(element => {
-            console.log()
-            axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/users/${element}`)
-                .then(res=> { 
-                    dispatch({type: FETCH_WIShLIST_DATA_SUCCESS, payload: res.data});
-                })
-                .catch(err => {
-                    dispatch({type: FETCH_WIShLIST_DATA_ERROR, payload: err.data});
-                });
-        });
+        axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/users/${currentUserId}`)
+            .then(res=> { 
+                dispatch({type: FETCH_WIShLIST_DATA_SUCCESS, payload: res.data});
+            })
+            .catch(err => {
+                dispatch({type: FETCH_WIShLIST_DATA_ERROR, payload: err.data});
+            });
     }
 }
