@@ -2,8 +2,13 @@ import React, {useState} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth'
 import {connect} from 'react-redux';
 import {get_user_Id} from './../action/loginAction'
+import styled from 'styled-components';
 
 const Login = (props) => {
+
+    const LoginForm =  styled.div `
+    padding: 10%;
+    `
     const [credentials, setCredentials] = useState({})
 
     const login = e =>{
@@ -29,7 +34,7 @@ const Login = (props) => {
     }
 
     return (
-        <div>
+        <LoginForm>
             <form onSubmit = {login}>
                 <input 
                   type = 'text'
@@ -47,7 +52,7 @@ const Login = (props) => {
                 />
                 <button>Login</button>
             </form>
-        </div>
+        </LoginForm>
     )
 }
 

@@ -150,33 +150,10 @@ const BookExpanded = (props) => {
       
 
         <div>
-            <h1>Expanded Book</h1>
-            <Book
-            image={book.thumbnail}
-            title={book.title}
-            tag={book.tag}
-            publisher={book.publisher}
-            authors={book.authors}
             
-            // this is an array
-            description={book.description} />
-            <div className="reviews">
-                {console.log(book.reviews)}
-                REVIEW SECTION WIP
-            </div>
 
-            <div className="bookExpandedButtons">
-                <button className="add" onClick={(e)=>{
-                    e.preventDefault();
-                    props.get_book_id(parseInt(props.match.params.id));
-                    props.addToWishlist({ 
-                        user_id: parseInt(props.user_id), 
-                        book_id: parseInt(props.match.params.id)})
-                    console.log(props)
-                }}>Add To Wishlist</button>
-                <button className="add">Leave a review</button>
-            </div>
-        </div>
+            
+        
 
            <BookDiv>
             <BookTop>
@@ -224,16 +201,25 @@ const BookExpanded = (props) => {
                     
             </Reviews>
 
-            <Buttons className="bookExpandedButtons">
-                <Button className="add">Add To Wishlist</Button>
-               <a target='_blank' href={book.access_link}><Button className="add">Get This Book</Button></a>
+            
+
+            <Buttons>
+                <Button className="add" onClick={(e)=>{
+                    e.preventDefault();
+                    props.get_book_id(parseInt(props.match.params.id));
+                    props.addToWishlist({ 
+                        user_id: parseInt(props.user_id), 
+                        book_id: parseInt(props.match.params.id)})
+                    console.log(props)
+                }}>Add To Wishlist</Button>
+                <a target='_blank' href={book.access_link}><Button className="add">Get This Book</Button></a>
                 <Button className="add">Leave a review</Button>
             </Buttons>
             
         </BookDiv>
             
         
-
+            </div>
         
     );
 }

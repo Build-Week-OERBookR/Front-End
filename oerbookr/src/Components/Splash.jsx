@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+const SplashPage = styled.div `
+padding: 10%;
+
+`
 
 const Splash = (props) => {
     return (
-        <div>
+        <SplashPage>
             <h1 className="">Welcome to OER Bookr</h1>
             <h4>Your resource for learnin' good.</h4>
             <ul>
@@ -14,7 +20,7 @@ const Splash = (props) => {
             <Link to = '/signup'>SignUp</Link>
           </li>
         </ul>
-        </div>
+        </SplashPage>
     );
 }
 
