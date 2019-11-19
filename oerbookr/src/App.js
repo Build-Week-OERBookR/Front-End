@@ -7,29 +7,23 @@ import { Route , Link} from 'react-router-dom';
 import Login from './login/LoginPage';
 import SignUp from './signup/SignUp';
 import Footer from './Components/Footer';
+import Splash from './Components/Splash';
 import Wishlist from './Components/Wishlist/Wishlist';
+
 
 
 function App() {
   return (
     <div className="App">
-
       <Navigation />
+
+      
+       <Route path='/' exact component={Splash} />
+      <Route  path = '/login' component = {Login} />
+      <Route  path = '/signup' component = {SignUp} />
+
       <Route exact path='/booklist' component={BookList} />
       <Route path ='/books/:id' component={BookExpanded} />
-      
-       <ul>
-          <li>
-            <Link to = '/login'>Login</Link>
-          </li>
-          <li>
-            <Link to = '/signup'>SignUp</Link>
-          </li>
-        </ul>
-        
-      <Route exact path = '/login' component = {Login} />
-      <Route exact path = '/signup' component = {SignUp} />
-      <Route exact path = '/wishlist' component = {Wishlist} />
 
 
       <Footer />

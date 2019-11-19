@@ -35,7 +35,7 @@ const BookList = (props) => {
         .then(res => {
             console.log(res)
             updateBooks(res.data)
-            console.log(books)
+            
             
         })
         .catch(err => {

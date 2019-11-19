@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from 'react';
-import Book from '../Components/Book';
-import axiosWithAuth from '../utils/axiosWithAuth';
 
+import styled from 'styled-components';
+import axiosWithAuth from '../utils/axiosWithAuth';
+import { Link  } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {get_book_id} from './../action/loginAction'
 import { addToWishlist } from './../action/addToWishList'
 
-import axios from 'axios';
-import { Link  } from 'react-router-dom';
 
 
 const BookExpanded = (props) => {
+
     
     const [book, setBook] = useState({});
     useEffect(() => { 
@@ -20,6 +20,7 @@ const BookExpanded = (props) => {
         .then(res => {
             // console.log(res.data)
             setBook(res.data)
+            
         })
         .catch(err => {
             console.log(err)
@@ -28,7 +29,7 @@ const BookExpanded = (props) => {
         }
         getBook()
         
-    }, []);
+    }, [props.match.params.id]);
 
 
 
@@ -143,7 +144,7 @@ const BookExpanded = (props) => {
 
 
     // const {thumbnail, title, tag,publisher,authors, description} = book;
-    
+  
 
     return (
       
@@ -203,9 +204,9 @@ const BookExpanded = (props) => {
             </DescriptionContainer>
 
             <Reviews className="reviews">
-                {book.reviews == '[]' ? book.reviews.map((item,i) => {
-                    console.log(item.review)
-                    
+
+                {
+                    book.reviews && book.reviews.length > 0 ? book.reviews.map((item,i) => {
                     
                         return (
                             <div className="review">
@@ -217,8 +218,9 @@ const BookExpanded = (props) => {
                        
                        
                     
-                    }): <p>There are no reviews for this title! Be the first!</p>
+                    }) : <h3>There are no reviews for this title, be the first to write one!</h3>
                 }
+              
                     
             </Reviews>
 
