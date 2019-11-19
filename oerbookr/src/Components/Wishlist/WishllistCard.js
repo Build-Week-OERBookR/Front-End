@@ -1,20 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-function WishlistCard({
-  wishlistData
-  //  setDisplay,
-  //  display,
-  //  setSavedBooks
-}) {
-//   console.log(wishlistData);
-  // const handleDisplayModal = (e, books) => {
-  //     e.preventDefault();
+import {deleteSavedBook} from './../../action/addToWishList'
+import { connect } from "react-redux";
 
-  //     setDisplay(!display)
-  //     setSavedBooks(books)
-  // }
+function WishlistCard({ wishlistData, deleteSavedBook }) {
+    const deleteSavedBooks = (e, id) => {
+        e.preventDefault();
+        window.location.reload();
+        deleteSavedBook(id.id)
+
+    }
   return (
+
     <WishListCardStyles>
       <div className="image">
         <img src={wishlistData.thumbnail} alt={wishlistData.thumbnail} />
@@ -26,22 +24,23 @@ function WishlistCard({
           </a>
         </h3>
         <h6>
-                by{" "}
-                {wishlistData.authors.map(author => (
-                <span key={author.id}>{author.name}</span>
-                ))}
-            </h6>
+          by{" "}
+          {wishlistData.authors.map(author => (
+            <span key={author.id}>{author.name}</span>
+          ))}
+        </h6>
         <p className="avg-rating">Avg rating: {wishlistData.stars} </p>
         <p>
           <span> {wishlistData.license}</span>
         </p>
       </div>
-      <div className="review"></div>
+      <div className="delete" onClick= {e => deleteSavedBooks(e, wishlistData)}>Delete</div>
     </WishListCardStyles>
   );
 }
 
-export default WishlistCard;
+
+export default connect(null, {deleteSavedBook})(WishlistCard);
 
 const WishListCardStyles = styled.div`
   box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
@@ -76,5 +75,15 @@ const WishListCardStyles = styled.div`
   .details h3 a {
     text-decoration: none;
     color: #000000;
+  }
+  .delete {
+    width: 10%;
+    text-align: center;
+    background: red;
+    height: 17px;
+    padding: 9px 5px;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-weight: bolder;
   }
 `;

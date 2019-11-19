@@ -27,9 +27,10 @@ export const fetchAllID = () => {
   return dispatch => {
     dispatch({ type: FETCH_ALLIDS_DATA_START });
     axiosWithAuth()
-      .get(" https://oer-bookr.herokuapp.com/api/wishlist")
+      .get("https://oer-bookr.herokuapp.com/api/wishlist")
       .then(res => {
-        dispatch({ type: FETCH_ALLIDS_DATA_SUCCESS, payload: res.data });
+        const currentUserWIshListID = res.data.filter(wishListId => wishListId.user_id === parseInt(localStorage.getItem("id")))
+        dispatch({ type: FETCH_ALLIDS_DATA_SUCCESS, payload: currentUserWIshListID });
       })
       .catch(err => {
         dispatch({ type: FETCH_ALLIDS_DATA_ERROR, payload: err.data });
@@ -44,6 +45,7 @@ export const fetchWishListData = allId => {
     axiosWithAuth()
       .get(`https://oer-bookr.herokuapp.com/api/users/${currentUserId}`)
       .then(res => {
+        console.log(res)
         dispatch({ type: FETCH_WIShLIST_DATA_SUCCESS, payload: res.data });
       })
       .catch(err => {
@@ -51,3 +53,27 @@ export const fetchWishListData = allId => {
       });
   };
 };
+
+
+export const deleteSavedBook =  bookId => {
+    return dispatch => {
+        axiosWithAuth()
+        .get("https://oer-bookr.herokuapp.com/api/wishlist")
+        .then(res => {
+          // filter the response and  filter the wishlist data with the same id as the current user
+          const currentUserWIshListID = res.data.filter(wishListId => wishListId.user_id === parseInt(localStorage.getItem("id")));
+          // Return the first element with the same id as the bookid from the wishlist card
+          const wishListIdToDelete = currentUserWIshListID.find((current => current.book_id === bookId))
+          //make a  delete call to delete the item that was return from the wishListIdToDelete
+
+          axiosWithAuth().delete(`https://oer-bookr.herokuapp.com/api/wishlist/${wishListIdToDelete.id}`)
+            .then(res=> {
+            })
+            .catch(err => {
+            })
+        })
+        .catch(err => {
+        });
+        
+    }
+}
