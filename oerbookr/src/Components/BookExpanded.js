@@ -185,20 +185,7 @@ const BookExpanded = (props) => {
                     
                     }) : <h3>There are no reviews for this title, be the first to write one!</h3>
                 }
-                {/* { book.reviews && book.reviews.map((item,i) => {
-                    
-                        return (
-                            <div className="review">
-                                <Username>{item.username}</Username>
-                                <p>{item.review}</p>
-                                <p>{item.stars}</p>
-                            </div>
-                           )
-                       
-                       
-                    
-                    })
-                } */}
+              
                     
             </Reviews>
 
