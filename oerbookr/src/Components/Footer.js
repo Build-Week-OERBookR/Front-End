@@ -10,6 +10,10 @@ const Footer = () => {
     padding: 1em;
     bottom: 0px;
     width: 100%;
+    margin-top: 3em;
+    text-shadow: 2px 2px 2px #333;
+    font-family: 'Secular One', sans-serif;
+
     `
     return (
         <Footer>
