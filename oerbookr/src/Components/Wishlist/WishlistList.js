@@ -10,15 +10,20 @@ function WishlistList(props) {
     const [savedBooks, setSavedBooks]= useState([])
     useEffect(()=>{
     },[display])
-   
+
     return (
         <>
             <WishlistListStyles>
-                {props.wishList.map( (wishlistData, i) =>  <WishlistCard key={i}          wishlistData= {wishlistData}
+            {/* {(props.wishList[0].books.length > 0 )&& console.log(props.wishList)} */}
+                { (props.wishList.length > 0 ) && props.wishList[0].books.map( (wishlistData, i) => {
+                console.log(wishlistData)
+                return  <WishlistCard key={i}         
+                     wishlistData= {wishlistData}
                     setDisplay={setDisplay}
                     display ={display}
                     setSavedBooks={setSavedBooks}
-                    />
+                    wishlistData = {wishlistData}
+                    />}
                     )}
             </WishlistListStyles>
             <SavedBooksDetailsModal 
