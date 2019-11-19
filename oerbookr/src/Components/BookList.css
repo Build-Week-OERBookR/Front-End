@@ -2,6 +2,7 @@
     display: inline-block;
     text-decoration: none;
     width: 30%;
+    color: black;
 }
 
 @media(max-width: 500px) {

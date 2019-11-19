@@ -1,7 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import Book from './Book';
 import styled from 'styled-components';
-import axios from 'axios';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import { NavLink } from 'react-router-dom';
 import './BookList.css';    
@@ -13,13 +12,18 @@ const BookList = (props) => {
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+
+    margin-top: 120px;
+
     padding: 3%;
+
 
 
     @media(max-width: 500px) {
         flex-direction: column;
     }
     `
+    
     
     const [books, updateBooks] = useState([]);
     useEffect(() => {
@@ -31,7 +35,7 @@ const BookList = (props) => {
         .then(res => {
             console.log(res)
             updateBooks(res.data)
-            console.log(books)
+            
             
         })
         .catch(err => {

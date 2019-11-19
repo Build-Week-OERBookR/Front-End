@@ -1,7 +1,14 @@
 import React, {useState} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth'
+import {connect} from 'react-redux';
+import {get_user_Id} from './../action/loginAction'
+import styled from 'styled-components';
 
 const Login = (props) => {
+
+    const LoginForm =  styled.div `
+    padding: 10%;
+    `
     const [credentials, setCredentials] = useState({})
 
     const login = e =>{
@@ -9,7 +16,9 @@ const Login = (props) => {
         axiosWithAuth().post(`https://oer-bookr.herokuapp.com/api/auth/login`, credentials)
             .then(res => {
                 console.log('Login Success', res)
-                localStorage.setItem('token', res.data.token)
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('id', res.data.user_id);
+                props.get_user_Id(parseInt(localStorage.getItem('id')))
                 props.history.push('/booklist')
             })
             .catch (err => { 
@@ -25,7 +34,7 @@ const Login = (props) => {
     }
 
     return (
-        <div>
+        <LoginForm>
             <form onSubmit = {login}>
                 <input 
                   type = 'text'
@@ -43,8 +52,16 @@ const Login = (props) => {
                 />
                 <button>Login</button>
             </form>
-        </div>
+        </LoginForm>
     )
 }
 
-export default Login
+const mapStateToProps = state => {
+    return{
+        user_Id: state.idReducer.user_id
+    }
+}
+const mapDispatchToProps = {
+    get_user_Id
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

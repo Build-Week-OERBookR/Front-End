@@ -1,32 +1,37 @@
 import React, {useState, useEffect} from 'react';
+
 import styled from 'styled-components';
-import Book from '../Components/Book';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import axios from 'axios';
+import { Link  } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {get_book_id} from './../action/loginAction'
+import { addToWishlist } from './../action/addToWishList'
+
+
 
 const BookExpanded = (props) => {
 
-
+    
     const [book, setBook] = useState({});
-
-    useEffect(() => {
-
+    useEffect(() => { 
         const id = props.match.params.id;
         const getBook = () => {
             axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/books/${id}`)
         .then(res => {
-            console.log(res.data)
+            // console.log(res.data)
             setBook(res.data)
+            
         })
         .catch(err => {
             console.log(err)
         })
-        console.log('hello')
 
         }
         getBook()
         
-    }, []);
+    }, [props.match.params.id]);
+
+
 
     const  Img = styled.img `
     width: 18em;
@@ -73,6 +78,9 @@ const BookExpanded = (props) => {
     margin-right: 15%;
     font-size: 1.4em;
     `
+    const Title = styled.h1 `
+    
+    `
     const Publisher = styled.div `
     display: flex;
     justify-content: space-between;
@@ -81,7 +89,7 @@ const BookExpanded = (props) => {
     `
     const Authors = styled.div `
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
     font-family: 'Lato', sans-serif;
     `
@@ -134,18 +142,25 @@ const BookExpanded = (props) => {
 
  
 
+
     // const {thumbnail, title, tag,publisher,authors, description} = book;
-    console.log(book);
+  
 
     return (
       
+
+        <div>
+            
+
+            
         
+
            <BookDiv>
             <BookTop>
                 <Img src={book.thumbnail} alt={book.title} className="book-img"/>
 
             <Info >
-                <h1 className="title">{book.title}</h1>
+                <Title>{book.title}</Title>
                 <Publisher className="book-info">
                     <h6 className="tag">{book.tag}</h6>
                     <h6 className="publisher">{book.publisher}</h6>
@@ -166,32 +181,58 @@ const BookExpanded = (props) => {
             </DescriptionContainer>
 
             <Reviews className="reviews">
-                {book.reviews && book.reviews.map((item,i) => {
+
+                {
+                    book.reviews && book.reviews.length > 0 ? book.reviews.map((item,i) => {
                     
                         return (
                             <div className="review">
-                                   <Username>{item.username}</Username>
-                           <p>{item.review}</p>
-                           <p>{item.stars}</p>
+                                <Username>{item.username}</Username>
+                                <p>{item.review}</p>
+                                <p>{item.stars}</p>
                             </div>
                            )
                        
                        
                     
-                    })}
+                    }) : <h3>There are no reviews for this title, be the first to write one!</h3>
+                }
+              
                     
             </Reviews>
 
-            <Buttons className="bookExpandedButtons">
-                <Button className="add">Add To Wishlist</Button>
+            
+
+            <Buttons>
+                <Button className="add" onClick={(e)=>{
+                    e.preventDefault();
+                    props.get_book_id(parseInt(props.match.params.id));
+                    props.addToWishlist({ 
+                        user_id: parseInt(props.user_id), 
+                        book_id: parseInt(props.match.params.id)})
+                    console.log(props)
+                }}>Add To Wishlist</Button>
+                <a target='_blank' href={book.access_link}><Button className="add">Get This Book</Button></a>
                 <Button className="add">Leave a review</Button>
             </Buttons>
             
         </BookDiv>
             
         
+            </div>
         
     );
 }
 
-export default BookExpanded;
+const mapStateToProps = state => {
+    console.log(state)
+    return{
+        user_id: state.idReducer.user_id,
+        book_id: state.idReducer.book_id
+    }
+}
+const mapDispatchToProps = {
+    get_book_id,
+    addToWishlist
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BookExpanded)
