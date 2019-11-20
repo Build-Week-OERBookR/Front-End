@@ -17,6 +17,16 @@ const Login = (props) => {
 
     img {
         width: 50%;
+        @media(max-width: 800px) {
+            width: 80%;
+            margin: 0 auto;
+            padding-bottom: 24%;
+        }
+        @media(max-width: 500px) {
+            width: 80%;
+            margin: 0 auto;
+            padding-bottom: 22%;
+        }
     }
 
     form {
@@ -45,6 +55,10 @@ const Login = (props) => {
             cursor: pointer;
             
         }
+    }
+    @media(max-width:800px) {
+        margin-top: 3em;
+        flex-direction: column;
     }
     `
 

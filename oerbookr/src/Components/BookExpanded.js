@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 
 import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import { Link  } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {get_book_id} from './../action/loginAction'
 import { addToWishlist } from './../action/addToWishList'
@@ -57,6 +56,11 @@ const BookExpanded = (props) => {
     background-color: #D9B382;
     padding: 3%;
     margin: 8% auto 0 auto;
+    @media(max-width: 800px) {
+        width: 90%;
+        margin: 20% auto 16% auto;
+        
+    }
     @media(max-width: 500px) {
         width: 90%;
         margin: 25% auto 0 auto;
@@ -227,7 +231,8 @@ const BookExpanded = (props) => {
                         book_id: parseInt(props.match.params.id)})
                     console.log(props)
                 }}>Add To Wishlist</Button>
-                <a target='_blank' href={book.access_link}><Button className="add">Get This Book</Button></a>
+                <a target='_blank' href={book.access_link}
+                rel="noopener noreferrer"><Button className="add">Get This Book</Button></a>
                 <Button className="add">Leave a review</Button>
             </Buttons>
             

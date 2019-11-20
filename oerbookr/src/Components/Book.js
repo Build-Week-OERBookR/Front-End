@@ -34,8 +34,7 @@ const Book = (props) => {
         
     }
     `
-    const NullBook = styled.div 
-    `
+    const NullBook = styled.div `
     display: none;
     `
     const BookTop = styled.div `
