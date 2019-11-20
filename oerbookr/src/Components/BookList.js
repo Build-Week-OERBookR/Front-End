@@ -62,11 +62,10 @@ const BookList = (props) => {
         <BooksDiv>
             {
                 books.map((book,i) => {
-                    // console.log(book.title)
                     return (
                         
                         <Book
-                        // key={i}
+                        key={i}
                         id={i + 1}
                         image={book.thumbnail}
                         title={book.title}
