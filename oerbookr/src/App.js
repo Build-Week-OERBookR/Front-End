@@ -25,7 +25,7 @@ function App() {
       <Route exact path='/booklist' component={BookList} />
       <Route path ='/books/:id' component={BookExpanded} />
 
-
+      <Route path='/wishlist' component={Wishlist}/>
       <Footer />
 
     </div>
