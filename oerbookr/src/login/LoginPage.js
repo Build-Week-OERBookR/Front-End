@@ -5,8 +5,6 @@ import {get_user_Id} from './../action/loginAction'
 import styled from 'styled-components';
 import bookshelf from '../img/bookshelf.jpg';
 
-const Login = (props) => {
-
     const LoginForm =  styled.div `
         width: 75%;
         margin: 0 auto;
@@ -61,6 +59,8 @@ const Login = (props) => {
             flex-direction: column;
         }
     `
+const Login = (props) => {
+
 
     const [credentials, setCredentials] = useState({})
 
@@ -84,6 +84,7 @@ const Login = (props) => {
             [e.target.name]: e.target.value
         })
     }
+
 
     return (
         <LoginForm>
