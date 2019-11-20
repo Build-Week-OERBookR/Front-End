@@ -4,13 +4,29 @@ import styled from 'styled-components';
 import lecture2 from '../img/lecture2.jpg';
 
 const SplashPage = styled.div `
-padding: 12%;
+padding: 15% 0%;
 display: flex;
 justify-content: space-between;
 
 
 img {
     width: 50%;
+
+    @media(max-width:800px) {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media(max-width:800px) {
+    padding: 15% 0%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@media(max-width:800px) {
+    padding: 18% 0%;
+    
 }
 
 `
@@ -44,6 +60,8 @@ align-items: center;
         cursor: pointer;
      }
  }
+
+ 
 `
 
 const Splash = (props) => {

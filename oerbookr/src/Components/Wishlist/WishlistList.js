@@ -40,7 +40,7 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {})(WishlistList)
 
 const WishlistListStyles = styled.div`
-    width: 960px;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;

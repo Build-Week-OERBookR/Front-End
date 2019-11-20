@@ -8,7 +8,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 background-color: #7EAFBA;
-width: 100%;
+width: 100vw;
 position: fixed;
 top: 0px;
 left: 0px;
@@ -23,6 +23,9 @@ height: 100px;
      color: #D9B382;
      font-weight: bold;
      margin-top: 6%;
+     @media(max-width: 800px) {
+        margin-top: 12%;
+    }
      @media(max-width: 500px) {
         margin-top: 18%;
     }

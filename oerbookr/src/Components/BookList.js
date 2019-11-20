@@ -66,8 +66,8 @@ const BookList = (props) => {
                     return (
                         
                         <Book
-                        key={i}
-                        id={i}
+                        // key={i}
+                        id={i + 1}
                         image={book.thumbnail}
                         title={book.title}
                         tag={book.tag}

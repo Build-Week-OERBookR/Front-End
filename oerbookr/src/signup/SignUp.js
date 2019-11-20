@@ -15,6 +15,10 @@ const SignUp = (props) => {
 
   img {
       width: 50%;
+      @media(max-width:800px) {
+        margin-top: 8%;
+        width: 80%;
+      }
   }
 
   form {
@@ -44,7 +48,14 @@ const SignUp = (props) => {
           
       }
   }
-  
+  @media(max-width:800px) {
+    padding: 15% 0%;
+    flex-direction: column;
+}
+@media(max-width:500px) {
+  padding: 20% 0%;
+  flex-direction: column;
+}
   `
 
     const [credentials, setCredentials] = useState({name :'', username : '', password : ''})
