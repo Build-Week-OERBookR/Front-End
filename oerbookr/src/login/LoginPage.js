@@ -62,7 +62,10 @@ import bookshelf from '../img/bookshelf.jpg';
 const Login = (props) => {
 
 
-    const [credentials, setCredentials] = useState({})
+    const [credentials, setCredentials] = useState({
+        username:'',
+        password:''
+    })
 
     const login = e =>{
         e.preventDefault();
