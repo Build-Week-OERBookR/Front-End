@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import  { NavLink } from 'react-router-dom';
 
 const Book = (props) => {
 
@@ -7,7 +8,7 @@ const Book = (props) => {
     width: 10em;
     height: 10em;
     @media(max-width: 500px) {
-        width: 50%;
+        width: 100%;
         
     }
     
@@ -29,8 +30,13 @@ const Book = (props) => {
     box-shadow: 4px 4px 4px rgba(0,0,0,0.3);
     media(max-width: 500px) {
         width: 100%;
+        padding: 1%;
         
     }
+    `
+    const NullBook = styled.div 
+    `
+    display: none;
     `
     const BookTop = styled.div `
     // display: flex;
@@ -63,6 +69,10 @@ const Book = (props) => {
     max-height: 12em;
     overflow-y: scroll;
     box-sizing: content-box; 
+    @media(max-width: 500px) {
+        max-height: 15em;
+        
+    }
     `
 
     const Description = styled.p `
@@ -72,13 +82,16 @@ const Book = (props) => {
     `
     if(props.image === null) {
         return (
-            <BookDiv>
+            <NullBook>
                 <Title>Oops! An error has occured here!</Title>
-            </BookDiv>
+            </NullBook>
         )
     }
     
     return (
+        <NavLink
+        className='NavLink'
+            to={`/books/${props.id}`}>
         <BookDiv>
             <BookTop>
                 <Img src={props.image} alt={props.title} className="book-img"/>
@@ -105,6 +118,7 @@ const Book = (props) => {
             </DescriptionContainer>
             
         </BookDiv>
+        </NavLink>
     );
 }
 
