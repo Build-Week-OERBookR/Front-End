@@ -17,6 +17,7 @@ img {
 const H1 = styled.h1`
 font-size: 2.4em;
 padding: 3%;
+line-height: 1.3em;
 `
 const H4 = styled.h4`
 font-size: 1.5em;
