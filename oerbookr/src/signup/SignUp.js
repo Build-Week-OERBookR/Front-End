@@ -3,7 +3,6 @@ import axiosWithAuth from '../utils/axiosWithAuth'
 import styled from 'styled-components';
 import lecture from '../img/lecture.jpg';
 
-const SignUp = (props) => {
 
   const SignupForm = styled.div `
   width: 75%;
@@ -24,17 +23,17 @@ const SignUp = (props) => {
   form {
       display: flex;
       flex-direction: column;
-      padding: 10%; 
-      
+      padding: 20px; 
+      width: 50%;
       input {
           font-size: 1.1em;
           margin: 1em auto;
           width: 80%;
-          
+          padding: 10px 20px;
       }
 
       button {
-          margin 0 auto;
+          margin:0 auto;
           width: 40%;
           background-color: #7EAFBA;
           color: #D9B382;        
@@ -57,6 +56,7 @@ const SignUp = (props) => {
   flex-direction: column;
 }
   `
+const SignUp = (props) => {
 
     const [credentials, setCredentials] = useState({name :'', username : '', password : ''})
 

@@ -30,14 +30,18 @@ import bookshelf from '../img/bookshelf.jpg';
         form {
             display: flex;
             flex-direction: column;
-            padding: 10%; 
-            
+            padding: 20px;; 
+            width: 50%;
             input {
                 font-size: 1.1em;
                 margin: 1em auto;
-                width: 80%;
+                width: 90%;
+                padding: 10px 20px;
+
             }
-            
+            input:focus{
+                outline: none;
+            }
             button {
                 margin: 0 auto;
                 width: 40%;
