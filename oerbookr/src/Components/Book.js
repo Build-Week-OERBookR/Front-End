@@ -57,7 +57,7 @@ const Book = (props) => {
     align-items: center;
     margin: 0 auto;
     font-family: 'Lato', sans-serif;
-    fonst-size: 1.2em;
+    font-size: 1.2em;
     `
 
     const DescriptionContainer = styled.div `

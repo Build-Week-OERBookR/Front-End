@@ -55,7 +55,7 @@ const Login = (props) => {
                 
             }
         }
-        
+
         @media(max-width:800px) {
             margin-top: 3em;
             flex-direction: column;
@@ -68,7 +68,6 @@ const Login = (props) => {
         e.preventDefault();
         axiosWithAuth().post(`https://oer-bookr.herokuapp.com/api/auth/login`, credentials)
             .then(res => {
-                console.log('Login Success', res)
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('id', res.data.user_id);
                 props.get_user_Id(parseInt(localStorage.getItem('id')))
