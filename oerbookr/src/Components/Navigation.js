@@ -57,7 +57,12 @@ const Navigation = () => {
             <H1 className="title">OER Bookr</H1>
             <UserButtons className="user-buttons">
                 <Link to='/booklist'>Home</Link>
-                <Link className="log">Log Out</Link>
+                <Link 
+                    to='/'  
+                    className="log"
+                    onClick={()=> {
+                        localStorage.removeItem('token')
+                    }}>Log Out</Link>
                 <Link to='/wishlist'>WishList</Link>
             </UserButtons>
         </Header>

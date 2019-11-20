@@ -28,7 +28,7 @@ const Book = (props) => {
     margin: 1em auto 1em auto;
     height: 40em;
     box-shadow: 4px 4px 4px rgba(0,0,0,0.3);
-    media(max-width: 500px) {
+    @media(max-width: 500px) {
         width: 100%;
         padding: 1%;
         
@@ -57,7 +57,7 @@ const Book = (props) => {
     align-items: center;
     margin: 0 auto;
     font-family: 'Lato', sans-serif;
-    fonst-size: 1.2em;
+    font-size: 1.2em;
     `
 
     const DescriptionContainer = styled.div `
@@ -103,7 +103,7 @@ const Book = (props) => {
                 </Publisher>
                 <Authors>
                 {props.authors && props.authors.map(author => {
-                    return <h6>{author.name}</h6>
+                    return <h6 key={author.name}>{author.name}</h6>
                 })}
                 </Authors>
                 
