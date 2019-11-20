@@ -1,10 +1,49 @@
 import React, { useState, } from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
 import styled from 'styled-components';
+import lecture from '../img/lecture.jpg';
+
 const SignUp = (props) => {
 
   const SignupForm = styled.div `
-  margin-top: 10%;
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 8% 0% 8% 0%;
+
+  img {
+      width: 50%;
+  }
+
+  form {
+      display: flex;
+      flex-direction: column;
+      padding: 10%; 
+      
+      input {
+          font-size: 1.1em;
+          margin: 1em auto;
+          width: 80%;
+          
+      }
+
+      button {
+          margin 0 auto;
+          width: 40%;
+          background-color: #7EAFBA;
+          color: #D9B382;        
+          font-weight: bold;
+          text-shadow: 2px 2px 2px #111;
+          border-radius: 12px;
+          border: none;
+          padding: 1.5%;
+          font-size: 1.1em;
+          cursor: pointer;
+          
+      }
+  }
   
   `
 
@@ -31,6 +70,7 @@ const SignUp = (props) => {
 
     return (
       <SignupForm>
+        <img src={lecture} alt="Lecture Hall"/>
          <form onSubmit = {signup}>
                 <input 
                   type = 'text'
