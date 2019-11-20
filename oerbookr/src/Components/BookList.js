@@ -2,7 +2,6 @@ import React,{ useState, useEffect } from 'react';
 import Book from './Book';
 import styled from 'styled-components';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import { NavLink } from 'react-router-dom';
 import './BookList.css';    
 
 const BookList = (props) => {
@@ -65,10 +64,7 @@ const BookList = (props) => {
                 books.map((book,i) => {
                     // console.log(book.title)
                     return (
-                        <NavLink
-                        className='NavLink'
-                        key={i}
-                         to={`/books/${book.id}`}>
+                        
                         <Book
                         key={i}
                         id={i}
@@ -81,7 +77,7 @@ const BookList = (props) => {
                         description={book.description}
 
                          />
-                         </NavLink>
+                         
                          
                     )
                 })
