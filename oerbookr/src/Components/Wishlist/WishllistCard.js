@@ -24,9 +24,9 @@ function WishlistCard({ wishlistData, deleteSavedBook }) {
           </a>
         </h3>
         <h6>
-          by{" "}
+          Authors: {" "}
           {wishlistData.authors.map(author => (
-            <span key={author.id}>{author.name}</span>
+            <span key={author.id}>{author.name} {', '}</span>
           ))}
         </h6>
         <p className="avg-rating">Avg rating: {wishlistData.stars} </p>
@@ -52,7 +52,7 @@ const WishListCardStyles = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 0px;
-  @media(max-width: 500px) {
+  @media(max-width: 600px) {
     flex-direction: column;
     justify-content:center;
     align-items: center;
@@ -65,6 +65,11 @@ const WishListCardStyles = styled.div`
     justify-content: center;
     align-self: center;
     height: 100%;
+    @media (max-width: 600px) {
+        width: 80%;
+        height: 400px;
+        object-fit: cover;   
+    }
   }
   img {
     width: 100%;
@@ -75,10 +80,18 @@ const WishListCardStyles = styled.div`
     display: flex;
     flex-direction: column;
     align-self: center;
-    @media(min-width: 500px) {
-      align-items:center;
-      justify-content:center;
+    padding-left: 20px; 
+    @media(max-width: 600px) {
+        font-size: 1.5rem;
+        width: 100%;
+        height: 150px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
     }
+  }
+  .details h3:hover{
+      text-decoration: underline;
   }
   .details h3 a {
     text-decoration: none;
