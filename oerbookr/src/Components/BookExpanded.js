@@ -1,21 +1,29 @@
-import React, { useState, useEffect } from "react";
 
-import styled from "styled-components";
-import axiosWithAuth from "../utils/axiosWithAuth";
-import { connect } from "react-redux";
-import { get_book_id } from "./../action/loginAction";
-import { addToWishlist } from "./../action/addToWishList";
+import React, {useState, useEffect} from 'react';
 
-const BookExpanded = props => {
-  const [book, setBook] = useState({});
-  useEffect(() => {
-    const id = props.match.params.id;
-    const getBook = () => {
-      axiosWithAuth()
-        .get(`https://oer-bookr.herokuapp.com/api/books/${id}`)
+import styled from 'styled-components';
+import axiosWithAuth from '../utils/axiosWithAuth';
+import { Link  } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {get_book_id} from './../action/loginAction'
+import { addToWishlist } from './../action/addToWishList'
+import ReviewForm from '../Review/reviewForm';
+
+
+
+const BookExpanded = (props) => {
+
+    
+    const [book, setBook] = useState({});
+    useEffect(() => { 
+        const id = props.match.params.id;
+        const getBook = () => {
+          
+            axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/books/${id}`)
         .then(res => {
-          console.log(res.data)
-          setBook(res.data);
+            console.log(res.data)
+            setBook(res.data)
+
         })
         .catch(err => {
           console.log(err);
@@ -24,7 +32,26 @@ const BookExpanded = props => {
     getBook();
   }, [props.match.params.id]);
 
-  const Img = styled.img`
+
+        }
+        getBook()
+        
+    }, [props.match.params.id]);
+
+    const deleteReview = (e, id) => {
+        e.preventDefault();
+        axiosWithAuth().delete(`https://oer-bookr.herokuapp.com/api/reviews/${id}`)
+                .then(res =>{
+                    console.log('delete', res)
+                    window.location.reload()
+                })
+                
+    }
+
+
+
+    const  Img = styled.img `
+
     width: 18em;
     height: 18em;
     margin-right: 15%;
@@ -147,78 +174,72 @@ const BookExpanded = props => {
     height: 4.5em;
     width: 9em;
     font-weight: bold;
-  `;
 
-  // const {thumbnail, title, tag,publisher,authors, description} = book;
+    `
 
-  return (
-    <div>
-      <BookDiv>
-        <BookTop>
-          <Img src={book.thumbnail} alt={book.title} className="book-img" />
+ 
 
-          <Info>
-            <Title>{book.title}</Title>
-            <Publisher className="book-info">
-              <h6 className="tag">Category: {book.tag}</h6>
-              <h6 className="publisher">Publisher: {book.publisher}</h6>
-            </Publisher>
-            <h6>Authors</h6>
-            <Authors>
-              {book.authors &&
-                book.authors.map(author => {
-                  return <h6 key={author.name}>{author.name}</h6>;
-                })}
-            </Authors>
-          </Info>
-        </BookTop>
 
-        <DescriptionContainer>
-          <Description>{book.description}</Description>
-        </DescriptionContainer>
+    // const {thumbnail, title, tag,publisher,authors, description} = book;
+  
 
-        <Reviews className="reviews">
-          {book.reviews && book.reviews.length > 0 ? (
-            book.reviews.map((item, i) => {
-              return (
-                <div className="review" key={i}>
-                  <Username>{item.username}</Username>
-                  <p>{item.review}</p>
-                  <p>{item.stars}</p>
-                </div>
-              );
-            })
-          ) : (
-            <h3>
-              There are no reviews for this title, be the first to write one!
-            </h3>
-          )}
-        </Reviews>
+    return (
+        <div>
+           <BookDiv>
+            <BookTop>
+                <Img src={book.thumbnail} alt={book.title} className="book-img"/>
+                    <Info >
+                        <Title>{book.title}</Title>
+                        <Publisher className="book-info">
+                            <h6 className="tag">{book.tag}</h6>
+                            <h6 className="publisher">{book.publisher}</h6>
+                        </Publisher>
+                        <Authors>
+                            {book.authors && book.authors.map(author => {
+                                return <h6>{author.name}</h6>
+                            })}
+                        </Authors>
+                    </Info>
+            </BookTop>
+            
+            <DescriptionContainer>
+                <Description >{book.description}</Description>
+            </DescriptionContainer>
 
-        <Buttons>
-          <Button
-            className="add"
-            onClick={e => {
-              e.preventDefault();
-              props.get_book_id(parseInt(props.match.params.id));
-              props.addToWishlist({
-                user_id: parseInt(props.user_id),
-                book_id: parseInt(props.match.params.id)
-              });
-              console.log(props);
-            }}
-          >
-            Add To Wishlist
-          </Button>
-          <a target="_blank" href={book.access_link} rel="noopener noreferrer">
-            <Button className="add">Get This Book</Button>
-          </a>
-          <Button className="add">Leave a review</Button>
-        </Buttons>
-      </BookDiv>
-    </div>
-  );
-};
+            <Reviews className="reviews">
+                {
+                    book.reviews && book.reviews.length > 0 ? book.reviews.map((item,i) => {
+                    
+                        return (
+                            <div className="review">
+                                <Username>{item.username}</Username>
+                                <p>{item.review}</p>
+                                <p>{item.stars}</p>
+                                <button onClick = {e => deleteReview(e, item.id)}>Delete</button>
+                            </div>
+                           )
+                    }) : <h3>There are no reviews for this title, be the first to write one!</h3>
+                }
+            </Reviews>  
+            <Buttons>
+                <Button className="add" onClick={(e)=>{
+                    e.preventDefault();
+                    props.get_book_id(parseInt(props.match.params.id));
+                    props.addToWishlist({ 
+                        user_id: parseInt(props.user_id), 
+                        book_id: parseInt(props.match.params.id)})
+                    console.log(props)
+                }}>Add To Wishlist</Button>
+                <a target='_blank' href={book.access_link}><Button className="add">Get This Book</Button></a>
+                <Button className="add">Leave a review</Button>
+                <ReviewForm bookid ={book.id} />
+            </Buttons>
+        </BookDiv>
+     </div>
+        
+    );
+}
+
 
 const mapStateToProps = state => {
   console.log(state);

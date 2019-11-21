@@ -18,7 +18,10 @@ const BookList = props => {
     @media (max-width: 500px) {
       flex-direction: column;
     }
-  `;
+    `
+    
+    
+
 
   const [books, updateBooks] = useState([]);
   useEffect(() => {
@@ -44,6 +47,7 @@ const BookList = props => {
     };
     getBooks();
   }, []);
+
 
   return (
     <BooksDiv>
