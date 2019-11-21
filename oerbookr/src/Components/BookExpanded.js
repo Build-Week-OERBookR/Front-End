@@ -33,10 +33,7 @@ const BookExpanded = (props) => {
   }, [props.match.params.id]);
 
 
-        }
-        getBook()
-        
-    }, [props.match.params.id]);
+      
 
     const deleteReview = (e, id) => {
         e.preventDefault();
