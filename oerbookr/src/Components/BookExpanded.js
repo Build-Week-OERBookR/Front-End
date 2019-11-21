@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {get_book_id} from './../action/loginAction'
 import { addToWishlist } from './../action/addToWishList'
 import ReviewForm from '../Review/reviewForm';
+import StarRatingComponent from 'react-star-rating-component';
 
 
 
@@ -152,6 +153,14 @@ const BookExpanded = (props) => {
     font-size: 1.2em;
     font-weight: bold;
   `;
+
+  const Review = styled.div `
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  `
   const Username = styled.p`
     font-family: "Lato", sans-serif;
     border-bottom: 1px solid black;
@@ -172,6 +181,10 @@ const BookExpanded = (props) => {
     width: 9em;
     font-weight: bold;
 
+    `
+    const Delete = styled.button`
+    display: inline-block;
+    margin-top: .5em;
     `
 
  
@@ -208,12 +221,17 @@ const BookExpanded = (props) => {
                     book.reviews && book.reviews.length > 0 ? book.reviews.map((item,i) => {
                     
                         return (
-                            <div className="review">
+                            <Review className="review">
                                 <Username>{item.username}</Username>
                                 <p>{item.review}</p>
-                                <p>{item.stars}</p>
-                                <button onClick = {e => deleteReview(e, item.id)}>Delete</button>
-                            </div>
+                                <StarRatingComponent
+                                name='bookRating'
+                                editing={false}
+                                starCount={5}
+                                value={item.stars}
+                                 />
+                                <Delete onClick = {e => deleteReview(e, item.id)}>Delete</Delete>
+                            </Review>
                            )
                     }) : <h3>There are no reviews for this title, be the first to write one!</h3>
                 }
