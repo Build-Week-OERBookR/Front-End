@@ -6,6 +6,7 @@ import { Link  } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {get_book_id} from './../action/loginAction'
 import { addToWishlist } from './../action/addToWishList'
+import ReviewForm from '../Review/reviewForm';
 
 
 
@@ -16,9 +17,10 @@ const BookExpanded = (props) => {
     useEffect(() => { 
         const id = props.match.params.id;
         const getBook = () => {
+          
             axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/books/${id}`)
         .then(res => {
-            // console.log(res.data)
+            console.log(res.data)
             setBook(res.data)
             
         })
@@ -30,6 +32,16 @@ const BookExpanded = (props) => {
         getBook()
         
     }, [props.match.params.id]);
+
+    const deleteReview = (e, id) => {
+        e.preventDefault();
+        axiosWithAuth().delete(`https://oer-bookr.herokuapp.com/api/reviews/${id}`)
+                .then(res =>{
+                    console.log('delete', res)
+                    window.location.reload()
+                })
+                
+    }
 
 
 
@@ -147,33 +159,22 @@ const BookExpanded = (props) => {
   
 
     return (
-      
-
         <div>
-            
-
-            
-        
-
            <BookDiv>
             <BookTop>
                 <Img src={book.thumbnail} alt={book.title} className="book-img"/>
-
-            <Info >
-                <Title>{book.title}</Title>
-                <Publisher className="book-info">
-                    <h6 className="tag">{book.tag}</h6>
-                    <h6 className="publisher">{book.publisher}</h6>
-                </Publisher>
-                <Authors>
-                    {book.authors && book.authors.map(author => {
-                        return <h6>{author.name}</h6>
-                    })}
-                </Authors>
-               
-                
-            </Info>
-
+                    <Info >
+                        <Title>{book.title}</Title>
+                        <Publisher className="book-info">
+                            <h6 className="tag">{book.tag}</h6>
+                            <h6 className="publisher">{book.publisher}</h6>
+                        </Publisher>
+                        <Authors>
+                            {book.authors && book.authors.map(author => {
+                                return <h6>{author.name}</h6>
+                            })}
+                        </Authors>
+                    </Info>
             </BookTop>
             
             <DescriptionContainer>
@@ -181,7 +182,6 @@ const BookExpanded = (props) => {
             </DescriptionContainer>
 
             <Reviews className="reviews">
-
                 {
                     book.reviews && book.reviews.length > 0 ? book.reviews.map((item,i) => {
                     
@@ -190,19 +190,12 @@ const BookExpanded = (props) => {
                                 <Username>{item.username}</Username>
                                 <p>{item.review}</p>
                                 <p>{item.stars}</p>
+                                <button onClick = {e => deleteReview(e, item.id)}>Delete</button>
                             </div>
                            )
-                       
-                       
-                    
                     }) : <h3>There are no reviews for this title, be the first to write one!</h3>
                 }
-              
-                    
-            </Reviews>
-
-            
-
+            </Reviews>  
             <Buttons>
                 <Button className="add" onClick={(e)=>{
                     e.preventDefault();
@@ -214,12 +207,10 @@ const BookExpanded = (props) => {
                 }}>Add To Wishlist</Button>
                 <a target='_blank' href={book.access_link}><Button className="add">Get This Book</Button></a>
                 <Button className="add">Leave a review</Button>
+                <ReviewForm bookid ={book.id} />
             </Buttons>
-            
         </BookDiv>
-            
-        
-            </div>
+     </div>
         
     );
 }

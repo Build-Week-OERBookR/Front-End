@@ -28,33 +28,25 @@ const BookList = (props) => {
     const [books, updateBooks] = useState([]);
     useEffect(() => {
         const getBooks = () => {
-            
-            
             axiosWithAuth()
-        .get(`https://oer-bookr.herokuapp.com/api/books/`)
-        .then(res => {
-            console.log(res)
-            updateBooks(res.data)
-            
-            
-        })
-        .catch(err => {
-            console.error(err);
-        })
+            .get(`https://oer-bookr.herokuapp.com/api/books/`)
+            .then(res => {
+                console.log(res)
+                updateBooks(res.data)
+            })
+            .catch(err => {
+                console.error(err);
+            })
 
-        axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/books/1`)
-        .then(res => {
-            console.log(res)
-            
-        })
-        .catch(err => {
-            console.log(err)
-        })
-
-        }
-
-        
-        
+            axiosWithAuth().get(`https://oer-bookr.herokuapp.com/api/books/1`)
+            .then(res => {
+                console.log(res)
+                
+            })
+            .catch(err => {
+                console.log(err)
+            })
+            }
         getBooks();
     }, [])
 
