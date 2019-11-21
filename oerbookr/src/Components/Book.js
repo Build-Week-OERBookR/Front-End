@@ -44,6 +44,9 @@ const Book = (props) => {
     `
     const Title = styled.div `
     font-size: 1.4em;
+    @media(max-width: 500px) {
+        font-size: 1em;
+    }
     `
     const Publisher = styled.div `
     display: flex;

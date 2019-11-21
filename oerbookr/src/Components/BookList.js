@@ -13,7 +13,7 @@ const BookList = props => {
 
     margin-top: 120px;
 
-    padding: 3%;
+    padding: 3% 0%;
 
     @media (max-width: 500px) {
       flex-direction: column;

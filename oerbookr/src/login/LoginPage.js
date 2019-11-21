@@ -30,7 +30,7 @@ import bookshelf from '../img/bookshelf.jpg';
         form {
             display: flex;
             flex-direction: column;
-            padding: 20px;; 
+            padding: 20px; 
             width: 50%;
             input {
                 font-size: 1.1em;

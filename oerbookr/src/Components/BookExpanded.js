@@ -14,7 +14,7 @@ const BookExpanded = props => {
       axiosWithAuth()
         .get(`https://oer-bookr.herokuapp.com/api/books/${id}`)
         .then(res => {
-          // console.log(res.data)
+          console.log(res.data)
           setBook(res.data);
         })
         .catch(err => {
@@ -39,12 +39,12 @@ const BookExpanded = props => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 75%;
+    width: 80%;
     text-align: center;
     border: 1px solid black;
     border-radius: 12px;
     background-color: #d9b382;
-    padding: 3%;
+    padding: 3% 0%;
     margin: 8% auto 0 auto;
     @media (max-width: 800px) {
       width: 90%;
@@ -59,6 +59,7 @@ const BookExpanded = props => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 3%;
 
     @media (max-width: 500px) {
       flex-direction: column;
@@ -80,8 +81,11 @@ const BookExpanded = props => {
   `;
   const Title = styled.h1`
     font-size: 1.5em;
+    padding-bottom: 1em;
+    line-height: 1.4em;
     @media (max-width: 500px) {
       padding-bottom: 0.5em;
+      
     }
   `;
   const Publisher = styled.div`
@@ -98,17 +102,18 @@ const BookExpanded = props => {
   `;
 
   const DescriptionContainer = styled.div`
-    width: 100%;
+    width: 90%;
     border: 1px solid black;
     background-color: #d7d7d7;
     margin-top: 1em;
-    padding: 2%;
+    padding: 2% 0%;
     line-height: 1.6em;
     font-weight: bold;
+    margin: 0 auto;
   `;
 
   const Description = styled.p`
-    width: 100%;
+    width: 90%;
     display: inline-block;
     font-family: "Montserrat", sans-serif;
     font-size: 1.2em;
@@ -132,7 +137,8 @@ const BookExpanded = props => {
   const Buttons = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
   `;
   const Button = styled.button`
     display: inline-block;
@@ -154,9 +160,10 @@ const BookExpanded = props => {
           <Info>
             <Title>{book.title}</Title>
             <Publisher className="book-info">
-              <h6 className="tag">{book.tag}</h6>
-              <h6 className="publisher">{book.publisher}</h6>
+              <h6 className="tag">Category: {book.tag}</h6>
+              <h6 className="publisher">Publisher: {book.publisher}</h6>
             </Publisher>
+            <h6>Authors</h6>
             <Authors>
               {book.authors &&
                 book.authors.map(author => {
