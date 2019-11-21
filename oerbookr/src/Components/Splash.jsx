@@ -11,9 +11,11 @@ justify-content: space-between;
 
 img {
     width: 50%;
+    margin-right: 3%;
+    
 
     @media(max-width:800px) {
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
     }
 }
@@ -32,17 +34,33 @@ img {
 `
 const H1 = styled.h1`
 font-size: 2.4em;
-padding: 3%;
+padding: 6% 0%;
 line-height: 1.3em;
+width: 80%;
+margin: 0 auto;
+font-family: 'Secular One',serif;
+@media(max-width: 500px) {
+    font-size: 2em;
+    
+}
 `
 const H4 = styled.h4`
 font-size: 1.5em;
 padding: 3%;
+width: 80%;
+margin: 0 auto;
+font-family: 'Lato', serif;
+@media(max-width: 500px) {
+    width: 70%;
+    
+}
 `
 const Buttons = styled.div`
 display: flex; 
 justify-content: space=between;
 align-items: center;
+width: 80%;
+margin: 0 auto;
  a {
      margin: 1em 2em;
 
@@ -69,7 +87,7 @@ const Splash = (props) => {
         <SplashPage>
             <div>
             <H1 className="">Welcome to OER Bookr</H1>
-            <H4>Your resource for learnin' good.</H4>
+            <H4>OER in an easy to use format for the benefit of educators and learners everywhere.</H4>
            <Buttons>
            <Link to = '/login'><button>Login</button></Link>
           

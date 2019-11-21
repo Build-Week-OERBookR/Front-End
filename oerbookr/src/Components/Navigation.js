@@ -22,7 +22,7 @@ height: 100px;
     text-decoration: none;
      color: #D9B382;
      font-weight: bold;
-     margin-top: 6%;
+     margin-top: 8%;
      @media(max-width: 800px) {
         margin-top: 12%;
     }
