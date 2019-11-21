@@ -7,9 +7,8 @@ const Footer = () => {
     background-color: #7EAFBA;
     color: #D9B382; 
     text-align: center;
-    padding: 1em;
-    bottom: 0px;
-    width: 100%;
+    padding: 1.3em 0em;
+    width: 100vw;
     margin-top: 3em;
     text-shadow: 2px 2px 2px #333;
     font-family: 'Secular One', sans-serif;

@@ -8,7 +8,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 background-color: #7EAFBA;
-width: 100%;
+width: 100vw;
 position: fixed;
 top: 0px;
 left: 0px;
@@ -22,7 +22,10 @@ height: 100px;
     text-decoration: none;
      color: #D9B382;
      font-weight: bold;
-     margin-top: 6%;
+     margin-top: 8%;
+     @media(max-width: 800px) {
+        margin-top: 12%;
+    }
      @media(max-width: 500px) {
         margin-top: 18%;
     }
@@ -54,7 +57,12 @@ const Navigation = () => {
             <H1 className="title">OER Bookr</H1>
             <UserButtons className="user-buttons">
                 <Link to='/booklist'>Home</Link>
-                <Link className="log">Log Out</Link>
+                <Link 
+                    to='/'  
+                    className="log"
+                    onClick={()=> {
+                        localStorage.removeItem('token')
+                    }}>Log Out</Link>
                 <Link to='/wishlist'>WishList</Link>
             </UserButtons>
         </Header>
