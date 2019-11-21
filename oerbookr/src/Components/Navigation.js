@@ -8,19 +8,28 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 background-color: #7EAFBA;
-
 width: 100vw;
 position: fixed;
 top: 0px;
 left: 0px;
 height: 100px;
 
-margin-bottom: 3em;
-
-
 @media(max-width: 500px) {
     
 }
+
+ a{
+    text-decoration: none;
+     color: #D9B382;
+     font-weight: bold;
+     margin-top: 8%;
+     @media(max-width: 800px) {
+        margin-top: 12%;
+    }
+     @media(max-width: 500px) {
+        margin-top: 18%;
+    }
+ } 
 `
 const H1 = styled.h1 `
 color: #D9B382;
@@ -28,18 +37,6 @@ font-family: 'Secular One', sans-serif;
 text-shadow: 2px 2px 2px #333;
 `
 const UserButtons = styled.div `
-
-    display: flex;
-    justify-content: space-around;
-    color: #D9B382;
-    width: 60%;
-    margin: -2em auto 0 auto;
-    font-size: 1.5em;
-    p a{
-        text-decoration: none;
-        color: #D9B382;
-    }
-
 display: flex;
 justify-content: space-around;
 color: #D9B382;
@@ -48,6 +45,10 @@ margin: -2em auto 0 auto;
 font-size: 1.5em;
 text-shadow: 2px 2px 2px #333;
 
+@media(max-width: 500px) {
+    font-size: 1em;
+}
+
 `
 
 const Navigation = () => {
@@ -55,9 +56,14 @@ const Navigation = () => {
         <Header>
             <H1 className="title">OER Bookr</H1>
             <UserButtons className="user-buttons">
-                <p className="home">Home</p>
-                <p className="log">Log Out</p>
-                <p><Link to='/wishlist'>WishList</Link></p>
+                <Link to='/booklist'>Home</Link>
+                <Link 
+                    to='/'  
+                    className="log"
+                    onClick={()=> {
+                        localStorage.removeItem('token')
+                    }}>Log Out</Link>
+                <Link to='/wishlist'>WishList</Link>
             </UserButtons>
         </Header>
     );

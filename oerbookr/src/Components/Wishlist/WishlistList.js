@@ -10,15 +10,18 @@ function WishlistList(props) {
     const [savedBooks, setSavedBooks]= useState([])
     useEffect(()=>{
     },[display])
-   
+
     return (
         <>
             <WishlistListStyles>
-                {props.wishList.map( (wishlistData, i) =>  <WishlistCard key={i}          wishlistData= {wishlistData}
+                { (props.wishList.length > 0 ) && props.wishList[0].books.map( (wishlistData, i) => {
+                return  <WishlistCard key={i}         
+                     wishlistData= {wishlistData}
                     setDisplay={setDisplay}
                     display ={display}
                     setSavedBooks={setSavedBooks}
-                    />
+                    wishlistData = {wishlistData}
+                    />}
                     )}
             </WishlistListStyles>
             <SavedBooksDetailsModal 
@@ -37,7 +40,7 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, {})(WishlistList)
 
 const WishlistListStyles = styled.div`
-    width: 960px;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     flex-direction: row;

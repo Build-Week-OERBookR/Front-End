@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import  { NavLink } from 'react-router-dom';
 
 const Book = (props) => {
 
@@ -7,7 +8,7 @@ const Book = (props) => {
     width: 10em;
     height: 10em;
     @media(max-width: 500px) {
-        width: 50%;
+        width: 100%;
         
     }
     
@@ -27,10 +28,14 @@ const Book = (props) => {
     margin: 1em auto 1em auto;
     height: 40em;
     box-shadow: 4px 4px 4px rgba(0,0,0,0.3);
-    media(max-width: 500px) {
+    @media(max-width: 500px) {
         width: 100%;
+        padding: 1%;
         
     }
+    `
+    const NullBook = styled.div `
+    display: none;
     `
     const BookTop = styled.div `
     // display: flex;
@@ -39,6 +44,9 @@ const Book = (props) => {
     `
     const Title = styled.div `
     font-size: 1.4em;
+    @media(max-width: 500px) {
+        font-size: 1em;
+    }
     `
     const Publisher = styled.div `
     display: flex;
@@ -52,7 +60,7 @@ const Book = (props) => {
     align-items: center;
     margin: 0 auto;
     font-family: 'Lato', sans-serif;
-    fonst-size: 1.2em;
+    font-size: 1.2em;
     `
 
     const DescriptionContainer = styled.div `
@@ -63,6 +71,10 @@ const Book = (props) => {
     max-height: 12em;
     overflow-y: scroll;
     box-sizing: content-box; 
+    @media(max-width: 500px) {
+        max-height: 15em;
+        
+    }
     `
 
     const Description = styled.p `
@@ -72,13 +84,16 @@ const Book = (props) => {
     `
     if(props.image === null) {
         return (
-            <BookDiv>
+            <NullBook>
                 <Title>Oops! An error has occured here!</Title>
-            </BookDiv>
+            </NullBook>
         )
     }
     
     return (
+        <NavLink
+        className='NavLink'
+            to={`/books/${props.id}`}>
         <BookDiv>
             <BookTop>
                 <Img src={props.image} alt={props.title} className="book-img"/>
@@ -91,7 +106,7 @@ const Book = (props) => {
                 </Publisher>
                 <Authors>
                 {props.authors && props.authors.map(author => {
-                    return <h6>{author.name}</h6>
+                    return <h6 key={author.name}>{author.name}</h6>
                 })}
                 </Authors>
                 
@@ -105,6 +120,7 @@ const Book = (props) => {
             </DescriptionContainer>
             
         </BookDiv>
+        </NavLink>
     );
 }
 

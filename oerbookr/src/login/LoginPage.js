@@ -3,19 +3,78 @@ import axiosWithAuth from '../utils/axiosWithAuth'
 import {connect} from 'react-redux';
 import {get_user_Id} from './../action/loginAction'
 import styled from 'styled-components';
-
-const Login = (props) => {
+import bookshelf from '../img/bookshelf.jpg';
 
     const LoginForm =  styled.div `
-    padding: 10%;
+        width: 75%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 8% 0% 8% 0%;
+
+        img {
+            width: 50%;
+            @media(max-width: 800px) {
+                width: 80%;
+                margin: 0 auto;
+                padding-bottom: 24%;
+            }
+            @media(max-width: 500px) {
+                width: 80%;
+                margin: 0 auto;
+                padding-bottom: 22%;
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            padding: 20px; 
+            width: 50%;
+            input {
+                font-size: 1.1em;
+                margin: 1em auto;
+                width: 90%;
+                padding: 10px 20px;
+
+            }
+            input:focus{
+                outline: none;
+            }
+            button {
+                margin: 0 auto;
+                width: 40%;
+                background-color: #7EAFBA;
+                color: #D9B382;        
+                font-weight: bold;
+                text-shadow: 2px 2px 2px #111;
+                border-radius: 12px;
+                border: none;
+                padding: 1.5%;
+                font-size: 1.1em;
+                cursor: pointer;
+                
+            }
+        }
+
+        @media(max-width:800px) {
+            margin-top: 3em;
+            flex-direction: column;
+        }
     `
-    const [credentials, setCredentials] = useState({})
+const Login = (props) => {
+
+
+    const [credentials, setCredentials] = useState({
+        username:'',
+        password:''
+    })
 
     const login = e =>{
         e.preventDefault();
         axiosWithAuth().post(`https://oer-bookr.herokuapp.com/api/auth/login`, credentials)
             .then(res => {
-                console.log('Login Success', res)
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('id', res.data.user_id);
                 props.get_user_Id(parseInt(localStorage.getItem('id')))
@@ -32,6 +91,7 @@ const Login = (props) => {
             [e.target.name]: e.target.value
         })
     }
+
 
     return (
         <LoginForm>
@@ -52,6 +112,7 @@ const Login = (props) => {
                 />
                 <button>Login</button>
             </form>
+            <img src={bookshelf} alt="Books on shelves"/>
         </LoginForm>
     )
 }
