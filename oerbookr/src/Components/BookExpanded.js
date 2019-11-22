@@ -9,13 +9,22 @@ import {get_book_id} from './../action/loginAction'
 import { addToWishlist } from './../action/addToWishList'
 import ReviewForm from '../Review/reviewForm';
 import StarRatingComponent from 'react-star-rating-component';
+import EditReviewForm from '../Review/editReviewForm';
 
 
 
 const BookExpanded = (props) => {
 
-    
     const [book, setBook] = useState({});
+    const [editing, setEditing] = useState(false)
+    const [currentReviews, setCurrentReviews] = useState({
+      id:'',
+      review: "dada",
+      stars: 2,
+      reviewer_id: parseInt(localStorage.getItem('id')),
+      book_id: props.bookid,
+  })
+
     useEffect(() => { 
         const id = props.match.params.id;
         const getBook = () => {
@@ -33,9 +42,6 @@ const BookExpanded = (props) => {
     getBook();
   }, [props.match.params.id]);
 
-
-      
-
     const deleteReview = (e, id) => {
         e.preventDefault();
         axiosWithAuth().delete(`https://oer-bookr.herokuapp.com/api/reviews/${id}`)
@@ -46,7 +52,9 @@ const BookExpanded = (props) => {
                 
     }
 
-
+    const editReview = review => {
+      setEditing(true)
+    }
 
     const  Img = styled.img `
 
@@ -231,6 +239,7 @@ const BookExpanded = (props) => {
                                 value={item.stars}
                                  />
                                 <Delete onClick = {e => deleteReview(e, item.id)}>Delete</Delete>
+                                <button onClick = {editReview}>Edit</button>
                             </Review>
                            )
                     }) : <h3>There are no reviews for this title, be the first to write one!</h3>
@@ -246,8 +255,17 @@ const BookExpanded = (props) => {
                     console.log(props)
                 }}>Add To Wishlist</Button>
                 <a target='_blank' href={book.access_link}><Button className="add">Get This Book</Button></a>
-                <Button className="add">Leave a review</Button>
-                <ReviewForm bookid ={book.id} />
+                <Button className="add" >Leave a review</Button>
+                {editing ? (
+                  <div>
+                    <EditReviewForm 
+                    currentReviews = {currentReviews} />
+                  </div>
+                ):(
+                  <div>
+                    <ReviewForm bookid ={book.id} />
+                  </div>
+                )} 
             </Buttons>
         </BookDiv>
      </div>

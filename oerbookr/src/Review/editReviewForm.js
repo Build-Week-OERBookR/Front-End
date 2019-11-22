@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth'
 import StarRatingComponent from 'react-star-rating-component';
-const ReviewForm = (props) => {
-    const [reviews, setReviews] = useState({
-        review: "dada",
-        stars: 2,
-        reviewer_id: parseInt(localStorage.getItem('id')),
-        book_id: props.bookid,
-    })
+
+const EditReviewForm = (props) => {
+   const [reviews, setReviews] = useState(props.currentReviews)
     
+   useEffect(() => {
+       setReviews(props.currentReviews)
+   }, [props])
+
     const handleChange = e => {
         setReviews({
             ...reviews,
@@ -16,12 +16,12 @@ const ReviewForm = (props) => {
         })
     }
     
-    const handleSubmit = e => {
+    const handleSubmit = (e, id) => {
         console.log(reviews)
         e.preventDefault()
-           axiosWithAuth().post(`https://oer-bookr.herokuapp.com/api/reviews/`, reviews)
+           axiosWithAuth().put(`https://oer-bookr.herokuapp.com/api/reviews/${id}`, reviews)
             .then(res => {
-                console.log('ReviewForm', res)
+                console.log('EditReviewForm', res)
                 window.location.reload()
             })
             .catch(err => {
@@ -45,7 +45,7 @@ const ReviewForm = (props) => {
                     value = {reviews.review}
                     onChange = {handleChange}
                 />
-                 <button>Add Review</button>
+                 <button>Edit Review</button>
                  <h2>Rating from state: {reviews.stars}</h2>
                     <StarRatingComponent 
                     name="stars" 
@@ -58,4 +58,4 @@ const ReviewForm = (props) => {
     )
 }
 
-export default ReviewForm;
+export default EditReviewForm;
