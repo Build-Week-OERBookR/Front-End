@@ -16,7 +16,7 @@ import lecture from '../img/lecture.jpg';
       width: 50%;
       @media(max-width:800px) {
         margin-top: 8%;
-        width: 80%;
+        width: 100%;
       }
   }
 
@@ -25,25 +25,36 @@ import lecture from '../img/lecture.jpg';
       flex-direction: column;
       padding: 20px; 
       width: 50%;
+      @media(max-width: 500px) {
+        width: 90%;
+    }
       input {
           font-size: 1.1em;
           margin: 1em auto;
           width: 80%;
           padding: 10px 20px;
+          @media(max-width: 500px) {
+            width: 100%;
+        }
       }
 
       button {
           margin:0 auto;
-          width: 40%;
+          width: 45%;
           background-color: #7EAFBA;
           color: #D9B382;        
           font-weight: bold;
           text-shadow: 2px 2px 2px #111;
           border-radius: 12px;
           border: none;
-          padding: 1.5%;
-          font-size: 1.1em;
+          padding: 3%;
+          font-size: 1.4em;
           cursor: pointer;
+          @media(max-width: 500px) {
+            width: 70%;
+            padding: 3%;
+            font-size: 1.4em;
+          }
           
       }
   }
@@ -56,6 +67,16 @@ import lecture from '../img/lecture.jpg';
   flex-direction: column;
 }
   `
+
+  const Welcome = styled.h5`
+        font-size: 2em;
+        width: 80%;
+        padding: 3% 0%;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 1.3em;
+        font-family: 'Secular One', sans-serif;
+    `
 const SignUp = (props) => {
 
     const [credentials, setCredentials] = useState({name :'', username : '', password : ''})
@@ -81,7 +102,9 @@ const SignUp = (props) => {
     return (
       <SignupForm>
         <img src={lecture} alt="Lecture Hall"/>
+        
          <form onSubmit = {signup}>
+         <Welcome>Sign up to get started!</Welcome>
                 <input 
                   type = 'text'
                   name = 'username'

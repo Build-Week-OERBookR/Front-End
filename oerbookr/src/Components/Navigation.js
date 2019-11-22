@@ -8,7 +8,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 background-color: #7EAFBA;
-width: 100vw;
+width: 100%;
 position: fixed;
 top: 0px;
 left: 0px;
@@ -22,13 +22,23 @@ height: 100px;
     text-decoration: none;
      color: #D9B382;
      font-weight: bold;
-     margin-top: 8%;
+     
      @media(max-width: 800px) {
         margin-top: 12%;
     }
      @media(max-width: 500px) {
-        margin-top: 18%;
+        margin: 18% 4% 0% 4%;
+        
     }
+
+    @media(min-width: 1000px) {
+        margin-top: 10%;
+    }
+
+    @media(min-width: 1200px) {
+        margin-top: 8%;
+    }
+
  } 
 `
 const H1 = styled.h1 `
@@ -47,6 +57,7 @@ text-shadow: 2px 2px 2px #333;
 
 @media(max-width: 500px) {
     font-size: 1em;
+    width: 80%;
 }
 
 `
