@@ -10,11 +10,8 @@ const BookList = props => {
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
-
     margin-top: 120px;
-
     padding: 3% 0%;
-
     @media (max-width: 500px) {
       flex-direction: column;
     }
@@ -29,7 +26,6 @@ const BookList = props => {
       axiosWithAuth()
         .get(`https://oer-bookr.herokuapp.com/api/books/`)
         .then(res => {
-          // console.log(res)
           updateBooks(res.data);
         })
         .catch(err => {
@@ -39,7 +35,6 @@ const BookList = props => {
       axiosWithAuth()
         .get(`https://oer-bookr.herokuapp.com/api/books/1`)
         .then(res => {
-          // console.log(res)
         })
         .catch(err => {
           console.log(err);
