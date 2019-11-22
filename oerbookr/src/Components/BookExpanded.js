@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { get_book_id } from "./../action/loginAction";
 import { addToWishlist } from "./../action/addToWishList";
@@ -241,6 +240,7 @@ const BookExpanded = props => {
       align-items: center;
     }
 
+
     
   `;
   const Info = styled.div`
@@ -254,6 +254,7 @@ const BookExpanded = props => {
       margin-right: 0;
       padding-top: 1em;
     }
+
 
     @media (min-width: 1200px) {
       line-height: 2em;
@@ -413,7 +414,7 @@ const BookExpanded = props => {
           {book.reviews && book.reviews.length > 0 ? (
             book.reviews.map((item, i) => {
               return (
-                <Review className="review">
+                <Review className="review" key= {i}>
                   <Username>{item.username}</Username>
                   <p>{item.review}</p>
                   <StarRatingComponent
@@ -448,9 +449,11 @@ const BookExpanded = props => {
           >
             Add To Wishlist
           </Button>
+
           
-            <Button className="add"><a target="_blank" href={book.access_link}>Get This Book</a></Button>
+            <Button className="add"><a rel='noopener' target="_blank" href={book.access_link}>Get This Book</a></Button>
           
+
           <Button className="add" onClick={toggle}>Leave a review</Button>
           <ReviewForm 
             bookid={book.id} 
