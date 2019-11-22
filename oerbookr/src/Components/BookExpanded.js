@@ -455,13 +455,14 @@ const BookExpanded = props => {
           
 
           <Button className="add" onClick={toggle}>Leave a review</Button>
-          <ReviewForm 
+          
+        </Buttons>
+        <ReviewForm 
             bookid={book.id} 
             modal ={modal}
             toggle ={toggle}
             setModal = {setModal}
           />
-        </Buttons>
       </BookDiv>
     </div>
   );
