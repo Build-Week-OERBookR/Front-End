@@ -167,14 +167,7 @@ const BookExpanded = props => {
     getBook();
   }, [props.match.params.id]);
 
-  const deleteReview = (e, id) => {
-    e.preventDefault();
-    axiosWithAuth()
-      .delete(`https://oer-bookr.herokuapp.com/api/reviews/${id}`)
-      .then(res => {
-        window.location.reload();
-      });
-  };
+  
 
 
     const deleteReview = (e, id) => {
