@@ -57,6 +57,12 @@ const BookExpanded = (props) => {
       width: 100%;
       margin-right: 0%;
     }
+
+    @media (min-width: 1200px) {
+      width: 32em;
+      height: 32em;
+      
+    }
   `;
 
   const BookDiv = styled.div`
@@ -69,7 +75,7 @@ const BookExpanded = (props) => {
     border: 1px solid black;
     border-radius: 12px;
     background-color: #d9b382;
-    padding: 3% 0%;
+    padding: 3% 0% 15% 0%;
     margin: 8% auto 0 auto;
     @media (max-width: 800px) {
       width: 90%;
@@ -91,6 +97,8 @@ const BookExpanded = (props) => {
       justify-content: center;
       align-items: center;
     }
+
+    
   `;
   const Info = styled.div`
     margin-right: 15%;
@@ -102,6 +110,28 @@ const BookExpanded = (props) => {
     @media (max-width: 500px) {
       margin-right: 0;
       padding-top: 1em;
+    }
+
+    @media (min-width: 1200px) {
+      line-height: 2em;
+      font-size: 2em;
+      width: 90%;
+     }
+
+     h5 {
+      
+      @media (min-width: 1200px) {
+        padding 4% 0%;
+       }
+    }
+
+    h6 {
+      @media(max-width: 500px) {
+        margin: 1em;
+      }
+      @media (min-width: 1200px) {
+        padding 4% 0%;
+       }
     }
   `;
   const Title = styled.h1`
@@ -149,7 +179,7 @@ const BookExpanded = (props) => {
     font-family: "Montserrat", sans-serif;
     background-color: #d7d7d7;
     border: 1px solid black;
-    padding: 3%;
+    padding: 2%;
     font-size: 1.2em;
     font-weight: bold;
   `;
@@ -201,9 +231,10 @@ const BookExpanded = (props) => {
                     <Info >
                         <Title>{book.title}</Title>
                         <Publisher className="book-info">
-                            <h6 className="tag">{book.tag}</h6>
-                            <h6 className="publisher">{book.publisher}</h6>
+                            <h6 className="tag">Category: {book.tag}</h6>
+                            <h6 className="publisher">Publisher: {book.publisher}</h6>
                         </Publisher>
+                        <h5>Authors</h5>
                         <Authors>
                             {book.authors && book.authors.map(author => {
                                 return <h6>{author.name}</h6>

@@ -5,8 +5,8 @@ import  { NavLink } from 'react-router-dom';
 const Book = (props) => {
 
     const  Img = styled.img `
-    width: 10em;
-    height: 10em;
+    width: 11em;
+    height: 11em;
     @media(max-width: 500px) {
         width: 100%;
         
@@ -43,16 +43,22 @@ const Book = (props) => {
     // align-items: center;
     `
     const Title = styled.div `
-    font-size: 1.4em;
+    font-size: 1.6em;
+    font-weight: bold;
     @media(max-width: 500px) {
         font-size: 1em;
     }
     `
     const Publisher = styled.div `
     display: flex;
-    justify-content: space-evenly;
+    width: 100%;
+    justify-content: space-between;
     align-items: center;
     font-family: 'Lato', sans-serif;
+
+    h6 {
+        margin: 0 .9em;
+    }
     `
     const Authors = styled.div `
     display: flex;
@@ -61,6 +67,10 @@ const Book = (props) => {
     margin: 0 auto;
     font-family: 'Lato', sans-serif;
     font-size: 1.2em;
+
+    h6 {
+        margin: 0 .9em;
+    }
     `
 
     const DescriptionContainer = styled.div `
@@ -101,9 +111,10 @@ const Book = (props) => {
             <div className="info">
                 <Title className="title">{props.title}</Title>
                 <Publisher className="book-info">
-                    <h6 className="tag">{props.tag}</h6>
-                    <h6 className="publisher">{props.publisher}</h6>
+                    <h6 className="tag">Category: {props.tag}</h6>
+                    <h6 className="publisher">Publisher: {props.publisher}</h6>
                 </Publisher>
+                <h5>Authors</h5>
                 <Authors>
                 {props.authors && props.authors.map(author => {
                     return <h6 key={author.name}>{author.name}</h6>

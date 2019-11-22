@@ -21,9 +21,9 @@ import bookshelf from '../img/bookshelf.jpg';
                 padding-bottom: 24%;
             }
             @media(max-width: 500px) {
-                width: 80%;
+                width: 100%;
                 margin: 0 auto;
-                padding-bottom: 22%;
+                padding-bottom: 8%;
             }
         }
 
@@ -54,6 +54,12 @@ import bookshelf from '../img/bookshelf.jpg';
                 padding: 1.5%;
                 font-size: 1.1em;
                 cursor: pointer;
+
+                @media(max-width: 500px) {
+                    width: 70%;
+                    font-size: 1.4em;
+                    padding: 3%;
+                  }
                 
             }
         }
