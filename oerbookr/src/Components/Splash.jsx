@@ -115,7 +115,7 @@ const Splash = (props) => {
 
     useEffect(() => {
         axios
-        .get('http://quotes.rest/qod.json?category=students')
+        .get('https://quotes.rest/qod.json?category=students')
         .then(res => {
             console.log(res.data.contents.quotes[0])
             updateQuote(res.data.contents.quotes[0])
