@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import styled from "styled-components";
 import axiosWithAuth from "../utils/axiosWithAuth";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { get_book_id } from "./../action/loginAction";
 import { addToWishlist } from "./../action/addToWishList";
@@ -191,8 +190,8 @@ const BookExpanded = props => {
             </Publisher>
             <Authors>
               {book.authors &&
-                book.authors.map(author => {
-                  return <h6>{author.name}</h6>;
+                book.authors.map((author, i) => {
+                  return <h6 key= {i}>{author.name}</h6>;
                 })}
             </Authors>
           </Info>
@@ -206,7 +205,7 @@ const BookExpanded = props => {
           {book.reviews && book.reviews.length > 0 ? (
             book.reviews.map((item, i) => {
               return (
-                <Review className="review">
+                <Review className="review" key= {i}>
                   <Username>{item.username}</Username>
                   <p>{item.review}</p>
                   <StarRatingComponent
@@ -241,7 +240,7 @@ const BookExpanded = props => {
           >
             Add To Wishlist
           </Button>
-          <a target="_blank" href={book.access_link}>
+          <a rel='noopener' href={book.access_link}>
             <Button className="add">Get This Book</Button>
           </a>
           <Button className="add" onClick={toggle}>Leave a review</Button>
