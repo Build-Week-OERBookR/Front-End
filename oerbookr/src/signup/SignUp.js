@@ -16,7 +16,7 @@ import lecture from '../img/lecture.jpg';
       width: 50%;
       @media(max-width:800px) {
         margin-top: 8%;
-        width: 80%;
+        width: 100%;
       }
   }
 
@@ -44,6 +44,11 @@ import lecture from '../img/lecture.jpg';
           padding: 1.5%;
           font-size: 1.1em;
           cursor: pointer;
+          @media(max-width: 500px) {
+            width: 70%;
+            padding: 3%;
+            font-size: 1.4em;
+          }
           
       }
   }
