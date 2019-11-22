@@ -245,7 +245,6 @@ const BookExpanded = props => {
             <Button className="add">Get This Book</Button>
           </a>
           <Button className="add" onClick={toggle}>Leave a review</Button>
-          {console.log(book)}
           <ReviewForm 
             bookid={book.id} 
             modal ={modal}

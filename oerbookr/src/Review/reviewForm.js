@@ -23,7 +23,6 @@ const ReviewForm = (props) => {
         e.preventDefault()
            axiosWithAuth().post(`https://oer-bookr.herokuapp.com/api/reviews/`, reviews)
             .then(res => {
-                console.log('ReviewForm', res)
                 window.location.reload()
             })
             .catch(err => {
