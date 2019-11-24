@@ -19,7 +19,7 @@ function WishlistCard({ wishlistData, deleteSavedBook }) {
       </div>
       <div className="details">
         <h3>
-          <a href={wishlistData.access_link} target="_blank">
+          <a href={wishlistData.access_link} target="blank">
             {wishlistData.title}
           </a>
         </h3>

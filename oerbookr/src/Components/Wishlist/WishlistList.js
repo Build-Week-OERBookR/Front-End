@@ -20,7 +20,6 @@ function WishlistList(props) {
                     setDisplay={setDisplay}
                     display ={display}
                     setSavedBooks={setSavedBooks}
-                    wishlistData = {wishlistData}
                     />}
                     )}
             </WishlistListStyles>

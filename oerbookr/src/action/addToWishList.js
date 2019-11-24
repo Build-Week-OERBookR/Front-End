@@ -45,7 +45,6 @@ export const fetchWishListData = allId => {
     axiosWithAuth()
       .get(`https://oer-bookr.herokuapp.com/api/users/${currentUserId}`)
       .then(res => {
-        console.log(res)
         dispatch({ type: FETCH_WIShLIST_DATA_SUCCESS, payload: res.data });
       })
       .catch(err => {

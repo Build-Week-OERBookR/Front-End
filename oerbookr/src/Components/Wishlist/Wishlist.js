@@ -6,7 +6,7 @@ import WishlistList from './WishlistList';
 function Wishlist(props) {
     useEffect(() => {
         props.fetchAllID();
-    },[]);
+    },[props]);
 
     useEffect(()=>{
         // if there are elements in the allid array then we run the fetchWishListData action creatot

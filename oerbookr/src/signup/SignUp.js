@@ -64,8 +64,7 @@ const SignUp = (props) => {
         e.preventDefault();
         axiosWithAuth().post('https://oer-bookr.herokuapp.com/api/auth/register', credentials)
             .then(res => {
-                localStorage.setItem('token', res.data.token)
-                console.log('Register Call Successful',res)
+                localStorage.setItem('token', res.data.token);
                 props.history.push('/booklist')
             })
             .catch (err => { 

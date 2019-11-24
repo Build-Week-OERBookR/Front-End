@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 function SavedBooksDetailsCard({ bookData }) {
-  console.log(bookData);
   return (
     <SavedBooksDetailsCardStyles>
       <div className="image">
@@ -11,7 +10,7 @@ function SavedBooksDetailsCard({ bookData }) {
       <div className="details">
         <h3>
           {" "}
-          <a href={bookData.access_link} target="_blank">
+          <a href={bookData.access_link} target="blank">
             {bookData.title}
           </a>
         </h3>
