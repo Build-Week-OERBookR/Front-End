@@ -2,12 +2,10 @@ import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 import WishlistCard from './WishllistCard';
-import SavedBooksDetailsModal from '../SavedBooksDetails/SavedBooksDetailsModal';
 
 
 function WishlistList(props) {
     const [ display, setDisplay ] = useState(false);
-    const [savedBooks, setSavedBooks]= useState([])
     useEffect(()=>{
     },[display])
 
@@ -19,15 +17,9 @@ function WishlistList(props) {
                      wishlistData= {wishlistData}
                     setDisplay={setDisplay}
                     display ={display}
-                    setSavedBooks={setSavedBooks}
                     />}
                     )}
             </WishlistListStyles>
-            <SavedBooksDetailsModal 
-                display={display} 
-                setDisplay={setDisplay}
-                savedBooks = {savedBooks}
-            />
         </>
     )
 }

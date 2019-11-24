@@ -19,7 +19,7 @@ function WishlistCard({ wishlistData, deleteSavedBook }) {
       </div>
       <div className="details">
         <h3>
-          <a href={wishlistData.access_link} target="blank">
+          <a href={wishlistData.access_link} rel='noopener'>
             {wishlistData.title}
           </a>
         </h3>
@@ -100,14 +100,20 @@ const WishListCardStyles = styled.div`
   .delete {
     width: 10%;
     text-align: center;
-    background: red;
+    background: lightcoral;
     height: 17px;
-    padding: 9px 5px;
+    padding: 9px 15px;
     border-radius: 4px;
     margin-right: 10px;
     font-weight: bolder;
+    height: 40px;
+    cursor: pointer;
     @media(max-width: 500px) {
       width: 30%;
     }
   }
+  .delete:hover{
+      background: red;
+      transition: .7s;
+    }
 `;

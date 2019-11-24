@@ -21,9 +21,9 @@ import bookshelf from '../img/bookshelf.jpg';
                 padding-bottom: 24%;
             }
             @media(max-width: 500px) {
-                width: 80%;
+                width: 100%;
                 margin: 0 auto;
-                padding-bottom: 22%;
+                padding-bottom: 8%;
             }
         }
 
@@ -32,11 +32,17 @@ import bookshelf from '../img/bookshelf.jpg';
             flex-direction: column;
             padding: 20px; 
             width: 50%;
+            @media(max-width: 500px) {
+                width: 90%;
+            }
             input {
                 font-size: 1.1em;
                 margin: 1em auto;
                 width: 90%;
                 padding: 10px 20px;
+                @media(max-width: 500px) {
+                    width: 100%;
+                }
 
             }
             input:focus{
@@ -54,6 +60,12 @@ import bookshelf from '../img/bookshelf.jpg';
                 padding: 1.5%;
                 font-size: 1.1em;
                 cursor: pointer;
+
+                @media(max-width: 500px) {
+                    width: 70%;
+                    font-size: 1.4em;
+                    padding: 3%;
+                  }
                 
             }
         }
@@ -62,6 +74,15 @@ import bookshelf from '../img/bookshelf.jpg';
             margin-top: 3em;
             flex-direction: column;
         }
+    `
+
+    const Welcome = styled.h5`
+        font-size: 2em;
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 1.3em;
+        font-family: 'Secular One', sans-serif;
     `
 const Login = (props) => {
 
@@ -95,7 +116,9 @@ const Login = (props) => {
 
     return (
         <LoginForm>
+            
             <form onSubmit = {login}>
+            <Welcome>Welcome back, you've made a smart choice!</Welcome>
                 <input 
                   type = 'text'
                   name = 'username'
@@ -113,6 +136,8 @@ const Login = (props) => {
                 <button>Login</button>
             </form>
             <img src={bookshelf} alt="Books on shelves"/>
+
+            
         </LoginForm>
     )
 }

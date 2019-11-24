@@ -1,16 +1,11 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 import styled from 'styled-components'
 import StarRatingComponent from 'react-star-rating-component';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import {ReviewContext} from '../contexts/ReviewContext'
 const ReviewForm = (props) => {
-    const [reviews, setReviews] = useState({
-        review: "",
-        stars: 0,
-        reviewer_id: parseInt(localStorage.getItem('id')),
-        
-    })
+
 
     const handleChange = e => {
         setReviews({
@@ -19,31 +14,32 @@ const ReviewForm = (props) => {
             book_id: props.bookid,
         })
     }
-    const handleSubmit = e => {
-        e.preventDefault()
-           axiosWithAuth().post(`https://oer-bookr.herokuapp.com/api/reviews/`, reviews)
-            .then(res => {
-                window.location.reload()
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
 
-    const onStarClick = nextvalue =>{
-        setReviews({...reviews,
-            stars:nextvalue
-        })
-    }
+    // const handleSubmit = e => {
+    //     e.preventDefault()
+    //        axiosWithAuth().post(`https://oer-bookr.herokuapp.com/api/reviews/`, reviews)
+    //         .then(res => {
+    //             window.location.reload()
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    // }
 
+    // const onStarClick = nextvalue =>{
+    //     setReviews({...reviews,
+    //         stars:nextvalue
+    //     })
+    // }
+    const {reviews, addReview, setReviews, onStarClick} = useContext(ReviewContext)
     return (
         <div>
         <Modal isOpen={props.modal} toggle={props.toggle} >
             <ModalHeader toggle={props.toggle}>Review Form</ModalHeader>
             <ModalBody>
-                <Form onSubmit = {handleSubmit}>
+                <Form onSubmit = {addReview}>
                     <StarRatingComponent 
-                        name="stars" 
+                        name='stars'
                         starCount={5}
                         value={reviews.stars}
                         onStarClick={onStarClick}
@@ -60,7 +56,7 @@ const ReviewForm = (props) => {
             <ModalFooter>
                 <Button style={{'background' : '#7EAFBA'}} 
                         onClick={(e)=> { props.toggle();
-                            handleSubmit(e);
+                            addReview(e);
                         }} 
                         className='primary'
                 >
