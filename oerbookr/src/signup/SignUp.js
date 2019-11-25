@@ -64,6 +64,9 @@ const SignupForm = styled.div`
         padding: 3%;
       }
     }
+    button:focus{
+      outline: none
+    }
   }
   @media (max-width: 800px) {
     padding: 15% 0%;

@@ -9,6 +9,7 @@ const BookList = props => {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    align-content: center;
     flex-wrap: wrap;
     margin-top: 120px;
     padding: 3% 0%;

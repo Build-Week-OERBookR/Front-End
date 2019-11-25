@@ -79,6 +79,9 @@ const Buttons = styled.div`
       cursor: pointer;
     }
   }
+  button:focus{
+    outline: none
+  }
 `;
 const Quote = styled.div`
   width: 80%;
