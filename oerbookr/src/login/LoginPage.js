@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import bookshelf from '../img/bookshelf.jpg';
 
     const LoginForm =  styled.div `
-        width: 75%;
+        width: 95%;
         margin: 0 auto;
         display: flex;
         justify-content: space-evenly;
@@ -32,7 +32,7 @@ import bookshelf from '../img/bookshelf.jpg';
             flex-direction: column;
             padding: 20px; 
             width: 50%;
-            @media(max-width: 500px) {
+            @media(max-width: 800px) {
                 width: 90%;
             }
             input {
@@ -40,6 +40,8 @@ import bookshelf from '../img/bookshelf.jpg';
                 margin: 1em auto;
                 width: 90%;
                 padding: 10px 20px;
+                border-radius: 5px;
+                border:1px solid rgb(238, 238, 238);
                 @media(max-width: 500px) {
                     width: 100%;
                 }
@@ -50,7 +52,7 @@ import bookshelf from '../img/bookshelf.jpg';
             }
             button {
                 margin: 0 auto;
-                width: 40%;
+                width: 140px;
                 background-color: #7EAFBA;
                 color: #D9B382;        
                 font-weight: bold;
